@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { useLang } from './i18n'
+import { asset } from './asset'
 
 const aboutImages = [
   { src: '/about/about-01-coolfonts.jpg', alt: 'I want to use cool fonts на български', height: '42vh' },
@@ -22,7 +23,7 @@ const fontImages = [
   '/font/01.jpg', '/font/02.jpg', '/font/04.png', '/font/03.png', '/font/05.png',
   '/font/06.png', '/font/07.jpg', '/font/08.jpg', '/font/09.jpg', '/font/10.jpg',
   '/font/11.jpg', '/font/12.jpg', '/font/13.jpg', '/font/14.jpg', '/font/15.jpg',
-]
+].map(asset)
 
 const fontTextKeys = [
   'landing.font1',
@@ -100,7 +101,7 @@ function Landing() {
 
       {/* Hero */}
       <main className="hero">
-        <img src="/whale.png" alt="" className="whale-img" />
+        <img src={asset('/whale.png')} alt="" className="whale-img" />
         <div className="letters-group">
           <video
             className="hero-letters"
@@ -112,8 +113,8 @@ function Landing() {
             onMouseEnter={(e) => e.currentTarget.play()}
             onMouseLeave={(e) => e.currentTarget.pause()}
           >
-            <source src="/hero-animation.webm" type="video/webm" />
-            <source src="/hero-animation.mp4" type="video/mp4" />
+            <source src={asset('/hero-animation.webm')} type="video/webm" />
+            <source src={asset('/hero-animation.mp4')} type="video/mp4" />
           </video>
         </div>
         <p className="tagline">{t('landing.tagline')}</p>
@@ -129,7 +130,7 @@ function Landing() {
           <div className="strip-row strip-images">
             {aboutImages.map((img) => (
               <img
-                src={img.src}
+                src={asset(img.src)}
                 alt={img.alt}
                 className="strip-img"
                 style={{ height: img.height }}
@@ -231,10 +232,10 @@ function Landing() {
         <div className="sources-block">
           <a
             className="sources-cover"
-            href="/about/sources.pdf"
+            href={asset('/about/sources.pdf')}
             download="Beron-sources.pdf"
           >
-            <img src="/about/sources-cover.jpg" alt="Източници — корица на книгата" />
+            <img src={asset('/about/sources-cover.jpg')} alt="Източници — корица на книгата" />
           </a>
           <div className="sources-info">
             <h3 className="sources-heading">{t('landing.sourcesHeading')}</h3>
@@ -265,7 +266,7 @@ function Landing() {
 
         {/* Full-bleed closing poster at the end of the section, rotated 90° */}
         <div className="poster-frame">
-          <img src="/about/poster-beron-display.jpg" alt="Beron Display poster" className="poster-img" />
+          <img src={asset('/about/poster-beron-display.jpg')} alt="Beron Display poster" className="poster-img" />
         </div>
       </section>
 

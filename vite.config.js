@@ -15,6 +15,9 @@ function historyData() {
 }
 
 export default defineConfig({
+  // Project site is served from https://sibela46.github.io/abvtype/, so all
+  // built asset URLs must be prefixed with this base path.
+  base: '/abvtype/',
   plugins: [react(), historyData()],
   server: {
     proxy: {

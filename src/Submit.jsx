@@ -4,8 +4,10 @@ import { useLang } from './i18n'
 
 // Submissions go to our own backend (server/index.js), which emails them to
 // abvtype@gmail.com with the font file attached. In dev, Vite proxies /api to
-// the local mail server (see vite.config.js).
-const ENDPOINT = '/api/submit'
+// the local mail server (see vite.config.js). On a static host like GitHub
+// Pages there is no backend, so set VITE_API_BASE at build time to the full
+// URL of a deployed mail server (e.g. https://abvtype-api.onrender.com).
+const ENDPOINT = `${import.meta.env.VITE_API_BASE ?? ''}/api/submit`
 
 function Submit() {
   const { t, lang, toggle } = useLang()

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import './History.css'
 import data from './history-data.json'
 import { useLang, pick } from './i18n'
+import { asset } from './asset'
 
 // Normalise the generated data (images may be a string or array)
 const ITEMS = data.map((e) => ({
@@ -113,7 +114,7 @@ function History() {
                     {item.images.length > 0 && <div className="cat-image-number">{item.id}</div>}
                     {item.images.map((src, k) => (
                       <figure key={k} className="cat-image-figure">
-                        <img src={src} alt={title} />
+                        <img src={asset(src)} alt={title} />
                         <figcaption className="cat-image-caption">
                           {title} <span className="cat-footer-year">{year}</span>
                         </figcaption>
