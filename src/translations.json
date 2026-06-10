@@ -1,0 +1,176 @@
+{
+  "nav.typeFoundry": { "en": "Type Foundry", "bg": "Шрифтове" },
+  "nav.history":     { "en": "History",      "bg": "История" },
+  "nav.submit":      { "en": "Submit",       "bg": "Качи Шрифт" },
+
+  "brand.abc":            { "en": "АБВ",                      "bg": "АБВ" },
+  "landing.tagline":      { "en": "Open Source Type Foundry", "bg": "Шрифтова библиотека за свободно ползване" },
+  "landing.aboutHeading": { "en": "About the project",        "bg": "Проектът" },
+  "landing.fontHeading":  { "en": "The Font",                 "bg": "Шрифтът" },
+  "landing.sourcesHeading": { "en": "Sources and online resources", "bg": "Източници и онлайн ресурси" },
+  "footer.project": { "en": "A project by Antonia Danailova", "bg": "Проект на Антония Данаилова" },
+  "footer.credits": { "en": "With the help of Ivan Rusev and Sibela Chinareva", "bg": "С помощта на Иван Русев и Сибела Чинарева" },
+  "footer.year":    { "en": "2026", "bg": "2026" },
+  "landing.aboutText": {
+    "en": "Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte. Abgeschieden wohnen Sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans. Ein kleines Bächlein namens Duden fließt durch ihren Ort und versorgt sie mit den nötigen Regelialien.",
+    "bg": "Далеч назад, зад планините от думи, далеч от страните Вокалия и Консонантия, живеят буквотекстовете. Усамотени, те обитават Буквоград на брега на Семантика — голям езиков океан. Едно малко поточе на име Дуден тече през тяхното селце и ги снабдява с необходимите правилалии."
+  },
+
+  "landing.about1": {
+    "en": "As students and designers, we often run into the problem that the Bulgarian form of Cyrillic is poorly represented in the digital space. Many of the available fonts are based solely on Russian letterforms, while the distinctive features of Bulgarian Cyrillic are often overlooked. This is precisely what motivated me to dig deeper into the history of Cyrillic script and to look for a way to contribute to its contemporary presence.",
+    "bg": "Като студенти и дизайнери често се сблъскваме с проблема, че българската форма на кирилицата е слабо представена в дигиталното пространство. Много от наличните шрифтове се основават единствено на руските буквени форми, докато характерните особености на българската кирилица често остават пренебрегнати. Именно това ме мотивира да се задълбоча в историята на кирилската писменост и да потърся начин да допринеса за нейното съвременно присъствие."
+  },
+  "landing.about2": {
+    "en": "The work traces the development of Cyrillic in Bulgaria, the changes in letterforms under the influence of various cultural and political processes, and the search for an independent Bulgarian typographic identity. At the heart of the project is the creation of the “Beron” typeface, inspired by Petar Beron’s “Primer with Various Instructions” of 1824 — one of the most significant works of the Bulgarian National Revival and a symbol of Bulgarian education.",
+    "bg": "Работата проследява развитието на кирилицата в България, промените в буквените форми под влияние на различни културни и политически процеси и търсенето на самостоятелна българска типографска идентичност. В центъра на проекта стои създаването на шрифта „Beron“, вдъхновен от „Буквар с различни поучения“ на Петър Берон от 1824 г. – едно от най-значимите произведения на Българското възраждане и символ на българското образование."
+  },
+  "landing.about3": {
+    "en": "Starting from the printed typeset forms, I developed a digital interpretation that preserves the character of the original while meeting contemporary typographic requirements. In parallel, I explored how the typeface works off the screen through various analogue printing techniques, thereby returning it to its material origins.",
+    "bg": "Произхождайки от печатните наборни форми, разработих дигитална интерпретация, която съхранява характера на оригинала и същевременно отговаря на съвременните типографски изисквания. Паралелно с това изследвах как шрифтът функционира извън екрана чрез различни аналогови техники на печат, като по този начин го върнах обратно към неговия материален произход."
+  },
+  "landing.about4": {
+    "en": "This work is not just a project to create a typeface. It is an attempt to rethink the relationship between typography, cultural heritage and identity. Through this Type Foundry I aim to make a part of the history of Bulgarian typography more visible and accessible to everyone.",
+    "bg": "Тази работа не е само проект за създаване на шрифт. Тя е опит за преосмисляне на връзката между типографията, културното наследство и идентичността. Чрез този Type Foundry се стремя да направя една част от историята на българската типография по-видима и достъпна за всеки."
+  },
+
+  "landing.font1": {
+    "en": "While researching a basis for the typeface, I came across mostly handwritten texts, which did not offer enough consistency in how the letters were drawn. So I set several conditions: the chosen source had to contain clearly and consistently written letters, be tied to a historical artefact significant to Bulgaria, not be so old as to lose its connection to the modern Bulgarian alphabet, and represent material that had not yet been digitised.",
+    "bg": "При проучването за основа на шрифта попаднах основно на ръкописни текстове, които не предлагаха достатъчно последователност в изписването на буквите. Затова поставих няколко условия: избраният източник да съдържа ясно и последователно изписани букви, да е свързан със значим за България исторически артефакт, да не е твърде стар, за да има връзка със съвременната българска азбука, и да представлява материал, който все още не е дигитализиран."
+  },
+  "landing.font2": {
+    "en": "Given these criteria, the choice became obvious — Petar Beron’s “Primer with Various Instructions,” better known as the Fish Primer. Published in 1824 in Brașov, it is the first textbook in modern Bulgarian and one of the most recognisable works in Bulgarian history.",
+    "bg": "След тези критерии, изборът стана очевиден – „Буквар с различни поучения“ на Петър Берон, по-известен като Рибния буквар. Издаден през 1824 г. в Брашов, той е първият учебник на новобългарски език и едно от най-разпознаваемите произведения в българската история."
+  },
+  "landing.font3": {
+    "en": "For my work in the Glyphs application I used pages 16 and 17 of the PDF edition as a model for constructing the glyphs. The capitals are built fairly consistently, whereas the lowercase letters show variations in proportion and stroke weight. This resulted in an uneven text colour and a strong contrast between uppercase and lowercase in the first version of the typeface.",
+    "bg": "За работата си в програмата Glyphs използвах страници 16 и 17 от PDF изданието като образец за конструирането на глифовете. Главните букви са изградени сравнително последователно, докато при малките се наблюдават различия в пропорциите и дебелината на щрихите. Това доведе до неравномерен тон на текста и силен контраст между главни и малки букви в първия вариант на шрифта."
+  },
+  "landing.font4": {
+    "en": "After several reworkings I reached a better balance and improved legibility both on screen and in print, without losing the distinctive look of the original.",
+    "bg": "След няколко преработки постигнах по-добър баланс и по-добра четимост както на екран, така и в печат, без да губя характерния облик на оригинала."
+  },
+  "landing.font5": {
+    "en": "Spacing and kerning were likewise developed after the model of the original pages. The typeface also includes numerals and the available punctuation marks.",
+    "bg": "Spacing и Kerning също са разработени по образец на оригиналните страници. Шрифтът включва още цифри и наличните препинателни знаци."
+  },
+  "landing.font6": {
+    "en": "The character of the “Beron” typeface naturally drew me toward the printing process. Although the typeface is adapted for digital use, it was important to me to bring it back into the analogue world and to explore how it would look in different printing techniques.",
+    "bg": "Характерът на шрифта „Beron“ естествено ме насочи към печатния процес. Въпреки че шрифтът е адаптиран за дигитална употреба, за мен беше важно да го върна обратно в аналоговия свят и да изследвам как би изглеждал в различни техники на печат."
+  },
+  "landing.font7": {
+    "en": "In the process I experimented with various materials and methods. I tried linocut printing, which creates an interesting texture but does not allow enough precision in rendering the letters. I also tested 3D-printed forms inspired by traditional lead type, but the results revealed limitations in both durability and print quality.",
+    "bg": "В процеса експериментирах с различни материали и методи. Опитах печат с линогравюра, който създава интересна текстура, но не позволява достатъчна прецизност при изработката на буквите. Тествах и 3D отпечатани форми, вдъхновени от традиционния оловен набор, но резултатите показаха ограничения както в здравината, така и в качеството на отпечатъка."
+  },
+  "landing.font8": {
+    "en": "A more successful solution turned out to be laser-cut wooden letters, which allowed a clean and stable print while also referencing the historical techniques for making large printing forms.",
+    "bg": "По-успешно решение се оказаха лазерно изрязаните дървени букви, които позволиха чист и стабилен печат и същевременно препращат към историческите техники за изработка на едри печатни форми."
+  },
+  "landing.font9": {
+    "en": "I also worked with photograms — a cameraless photographic process in which the letters are placed directly onto light-sensitive paper. The resulting images stand out with strong contrast and a distinct material presence.",
+    "bg": "Освен това работих с фотограми – фотографски процес без използване на камера, при който буквите се поставят директно върху светлочувствителна хартия. Получените изображения се отличават със силен контраст и специфично материално присъствие."
+  },
+  "landing.font10": {
+    "en": "In this way the typeface regained its original, handmade and living appearance. Of all the experiments, it was risograph printing that came closest to the atmosphere and visual look of the Fish Primer.",
+    "bg": "По този начин шрифтът отново придоби своята първоначална, ръчно изработена и жива визия. От всички експерименти именно ризографският печат се доближи най-много до атмосферата и визуалния облик на Рибния буквар."
+  },
+  "landing.font11": {
+    "en": "Closest to the character of the original specimen, however, was risograph printing. This technique combines digital preparation with a physical printing process and produces the characteristic imperfections, texture and slight ink bleed typical of old books.",
+    "bg": "Най-близо до характера на оригиналния образец обаче се оказа печатът с ризограф. Тази техника съчетава дигитална подготовка с физически печатен процес и създава характерните несъвършенства, текстура и леко разливане на мастилото, типични за старите книги."
+  },
+
+  "history.source": { "en": "Source", "bg": "Източник" },
+  "history.year":   { "en": "Period",   "bg": "Период" },
+
+  "submit.heading1": { "en": "Upload your own font and contribute to this Type Foundry!", "bg": "Качи свой шрифт и допринеси за този Type Foundry!" },
+  "submit.heading2": { "en": "Please read the license text at the bottom beforehand.", "bg": "Моля, прочети текста с лиценза в дъното на страницата предварително." },
+  "submit.name":     { "en": "Name",    "bg": "Име" },
+  "submit.email":    { "en": "Email",   "bg": "Имейл" },
+  "submit.file":     { "en": "File",    "bg": "Файл" },
+  "submit.message":  { "en": "Message", "bg": "Съобщение" },
+  "submit.agree":    { "en": "I read and agree with the licensing conditions", "bg": "Прочетох и съм съгласен с условията за лицензиране" },
+  "submit.expandFirst": { "en": "Open and read the license before you can agree", "bg": "Отвори и прочети лиценза, преди да можеш да се съгласиш" },
+  "submit.submit":   { "en": "Submit",  "bg": "Изпрати" },
+  "submit.sending":  { "en": "Sending…", "bg": "Изпращане…" },
+  "submit.success":  { "en": "Thanks! Your font was sent.", "bg": "Благодарим! Шрифтът беше изпратен." },
+  "submit.error":    { "en": "Something went wrong. Please try again.", "bg": "Нещо се обърка. Моля, опитай отново." },
+
+  "license.title":   { "en": "LICENSE", "bg": "ЛИЦЕНЗ" },
+  "license.version": { "en": "SIL OPEN FONT LICENSE Version 1.1", "bg": "SIL OPEN FONT LICENSE Version 1.1" },
+  "license.date":    { "en": "26 February 2007", "bg": "26 февруари 2007" },
+
+  "license.preamble.h": { "en": "PREAMBLE", "bg": "УВОД" },
+  "license.preamble.p1": {
+    "en": "The goals of the Open Font License (OFL) are to stimulate worldwide development of collaborative font projects, to support the font creation efforts of academic and linguistic communities, and to provide a free and open framework in which fonts may be shared and improved in partnership with others.",
+    "bg": "Целите на Open Font License (OFL) са да стимулира разработването на съвместни шрифтови проекти по целия свят, да подкрепя усилията за създаване на шрифтове от академичните и езиковите общности и да предоставя свободна и отворена рамка, в която шрифтовете могат да бъдат споделяни и усъвършенствани в партньорство с други."
+  },
+  "license.preamble.p2": {
+    "en": "The OFL allows the licensed fonts to be used, studied, modified and redistributed freely as long as they are not sold by themselves. The fonts, including any derivative works, can be bundled, embedded, redistributed and/or sold with any software provided that any reserved names are not used by derivative works. The fonts and derivatives, however, cannot be released under any other type of license. The requirement for fonts to remain under this license does not apply to any document created using the fonts or their derivatives.",
+    "bg": "OFL позволява лицензираните шрифтове да бъдат използвани, изучавани, модифицирани и разпространявани свободно, стига да не се продават самостоятелно. Шрифтовете, включително всякакви производни произведения, могат да бъдат пакетирани, вграждани, разпространявани и/или продавани с какъвто и да е софтуер, при условие че запазените имена не се използват от производните произведения. Шрифтовете и производните от тях обаче не могат да бъдат издавани под какъвто и да е друг тип лиценз. Изискването шрифтовете да останат под този лиценз не се отнася за документи, създадени чрез използване на шрифтовете или техните производни."
+  },
+
+  "license.definitions.h": { "en": "DEFINITIONS", "bg": "ДЕФИНИЦИИ" },
+  "license.definitions.p1": {
+    "en": "“Font Software” refers to the set of files released by the Copyright Holder(s) under this license and clearly marked as such. This may include source files, build scripts and documentation.",
+    "bg": "„Шрифтов софтуер“ означава съвкупността от файлове, издадени от носителя(ите) на авторски права под този лиценз и ясно обозначени като такива. Това може да включва изходни файлове, скриптове за компилиране и документация."
+  },
+  "license.definitions.p2": {
+    "en": "“Reserved Font Name” refers to any names specified as such after the copyright statement(s).",
+    "bg": "„Запазено име на шрифт“ означава всякакви имена, посочени като такива след декларацията(ите) за авторски права."
+  },
+  "license.definitions.p3": {
+    "en": "“Original Version” refers to the collection of Font Software components as distributed by the Copyright Holder(s).",
+    "bg": "„Оригинална версия“ означава съвкупността от компоненти на Шрифтовия софтуер, разпространявани от носителя(ите) на авторски права."
+  },
+  "license.definitions.p4": {
+    "en": "“Modified Version” refers to any derivative made by adding to, deleting, or substituting -- in part or in whole -- any of the components of the Original Version, by changing formats or by porting the Font Software to a new environment.",
+    "bg": "„Модифицирана версия“ означава всяко производно произведение, създадено чрез добавяне, изтриване или заместване – частично или изцяло – на който и да е от компонентите на Оригиналната версия, чрез промяна на форматите или чрез пренасяне на Шрифтовия софтуер в нова среда."
+  },
+  "license.definitions.p5": {
+    "en": "“Author” refers to any designer, engineer, programmer, technical writer or other person who contributed to the Font Software.",
+    "bg": "„Автор“ означава всеки дизайнер, инженер, програмист, технически писател или друго лице, допринесло за Шрифтовия софтуер."
+  },
+
+  "license.permission.h": { "en": "PERMISSION & CONDITIONS", "bg": "РАЗРЕШЕНИЕ И УСЛОВИЯ" },
+  "license.permission.intro": {
+    "en": "Permission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:",
+    "bg": "С настоящото се предоставя безплатно разрешение на всяко лице, което получи копие на Шрифтовия софтуер, да го използва, изучава, копира, обединява, вгражда, модифицира, преразпространява и продава модифицирани и немодифицирани копия на Шрифтовия софтуер при следните условия:"
+  },
+  "license.permission.li1": {
+    "en": "Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.",
+    "bg": "Нито Шрифтовият софтуер, нито който и да е от отделните му компоненти, в Оригинална или Модифицирана версия, не може да се продава самостоятелно."
+  },
+  "license.permission.li2": {
+    "en": "Original or Modified Versions of the Font Software may be bundled, redistribute and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.",
+    "bg": "Оригинални или Модифицирани версии на Шрифтовия софтуер могат да бъдат пакетирани, преразпространявани и/или продавани с какъвто и да е софтуер, при условие че всяко копие съдържа горепосочената бележка за авторски права и този лиценз. Те могат да бъдат включени или като самостоятелни текстови файлове, или като четими от човек заглавия, или в съответните машинночетими полета за метаданни в текстови или двоични файлове, стига тези полета да могат лесно да бъдат разгледани от потребителя."
+  },
+  "license.permission.li3": {
+    "en": "No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.",
+    "bg": "Никоя Модифицирана версия на Шрифтовия софтуер не може да използва Запазеното(ите) име(на) на шрифт, освен ако не е дадено изрично писмено разрешение от съответния носител на авторски права. Това ограничение се отнася само за основното име на шрифта, както то се представя на потребителите."
+  },
+  "license.permission.li4": {
+    "en": "The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.",
+    "bg": "Името(ната) на носителя(ите) на авторски права или на автора(ите) на Шрифтовия софтуер не може да се използва за популяризиране, одобряване или рекламиране на която и да е Модифицирана версия, освен за да се признае приносът на носителя(ите) на авторски права и автора(ите) или с тяхно изрично писмено разрешение."
+  },
+  "license.permission.li5": {
+    "en": "The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.",
+    "bg": "Шрифтовият софтуер, модифициран или немодифициран, частично или изцяло, трябва да бъде разпространяван изцяло под този лиценз и не трябва да бъде разпространяван под какъвто и да е друг лиценз. Изискването шрифтовете да останат под този лиценз не се отнася за документи, създадени чрез използване на Шрифтовия софтуер."
+  },
+
+  "license.termination.h": { "en": "TERMINATION", "bg": "ПРЕКРАТЯВАНЕ" },
+  "license.termination.p": {
+    "en": "This license becomes null and void if any of the above conditions are not met.",
+    "bg": "Този лиценз става нищожен и недействителен, ако някое от горните условия не бъде изпълнено."
+  },
+
+  "license.disclaimer.h": { "en": "DISCLAIMER", "bg": "ОТКАЗ ОТ ОТГОВОРНОСТ" },
+  "license.disclaimer.p": {
+    "en": "THE FONT SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.",
+    "bg": "ШРИФТОВИЯТ СОФТУЕР СЕ ПРЕДОСТАВЯ „КАКТО Е“, БЕЗ КАКВАТО И ДА Е ГАРАНЦИЯ, ИЗРИЧНА ИЛИ ПОДРАЗБИРАЩА СЕ, ВКЛЮЧИТЕЛНО, НО НЕ САМО, КАКВИТО И ДА Е ГАРАНЦИИ ЗА ПРОДАВАЕМОСТ, ПРИГОДНОСТ ЗА ОПРЕДЕЛЕНА ЦЕЛ И НЕНАРУШАВАНЕ НА АВТОРСКИ ПРАВА, ПАТЕНТИ, ТЪРГОВСКИ МАРКИ ИЛИ ДРУГИ ПРАВА. В НИКАКЪВ СЛУЧАЙ НОСИТЕЛЯТ НА АВТОРСКИ ПРАВА НЕ НОСИ ОТГОВОРНОСТ ЗА КАКВИТО И ДА Е ПРЕТЕНЦИИ, ЩЕТИ ИЛИ ДРУГА ОТГОВОРНОСТ, ВКЛЮЧИТЕЛНО КАКВИТО И ДА Е ОБЩИ, СПЕЦИАЛНИ, НЕПРЕКИ, СЛУЧАЙНИ ИЛИ ПОСЛЕДВАЩИ ЩЕТИ, БИЛО ПО ИСК ОТ ДОГОВОР, ДЕЛИКТ ИЛИ ПО ДРУГ НАЧИН, ПРОИЗТИЧАЩИ ОТ, ОТ УПОТРЕБАТА ИЛИ НЕВЪЗМОЖНОСТТА ЗА УПОТРЕБА НА ШРИФТОВИЯ СОФТУЕР ИЛИ ОТ ДРУГИ ДЕЙСТВИЯ С ШРИФТОВИЯ СОФТУЕР."
+  },
+
+  "tf.download": { "en": "Download", "bg": "Изтегли" },
+  "tf.sampleText": {
+    "en": "От малките вили и кирпичените постройки сред лозята се разнасяха ту задружни песни, бързи и жизнерадостни като хоро, ту самотни и провлечени гласове на един само певец, наситени с печал, която се издигаше към синьото небе. Слънцето грееше меко, листята на черниците, крушите и дюлите, засадени около вилите, капеха при всяко полъхване на вятъра, а жълтите пръчки на лозите, привързани с лико, висяха огънати безпомощно под тежината на изобилния плод.",
+    "bg": "От малките вили и кирпичените постройки сред лозята се разнасяха ту задружни песни, бързи и жизнерадостни като хоро, ту самотни и провлечени гласове на един само певец, наситени с печал, която се издигаше към синьото небе. Слънцето грееше меко, листята на черниците, крушите и дюлите, засадени около вилите, капеха при всяко полъхване на вятъра, а жълтите пръчки на лозите, привързани с лико, висяха огънати безпомощно под тежината на изобилния плод."
+  }
+}

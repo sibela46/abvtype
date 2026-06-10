@@ -1,0 +1,490 @@
+[
+  {
+    "id": "001",
+    "category": {
+      "bg": "устав",
+      "en": "uncial"
+    },
+    "title": {
+      "bg": "Преславска керамична плоча",
+      "en": "Preslav Ceramic Tile"
+    },
+    "year": {
+      "bg": "9 век",
+      "en": "9th century"
+    },
+    "desc": {
+      "bg": "В края на 9 век, по време на първото българско царство, учениците на Кирил и Методий работят върху новата кирилица в книжовната школа в Преслав. Те се ориентират силно по гръцките унциални форми и в същото време запазват фонетичните принципи на старобългарския език. Новата азбука е по-икономична в сравнение с глаголицата, която е заемала повече място, била трудна за учене и отнемала много време при писане.",
+      "en": "At the end of the 9th century, during the First Bulgarian Empire, the disciples of Cyril and Methodius worked on the new Cyrillic script at the literary school in Preslav. They drew heavily on Greek uncial forms while at the same time preserving the phonetic principles of the Old Bulgarian language. The new alphabet was more economical than Glagolitic, which took up more space, was hard to learn and time-consuming to write."
+    },
+    "images": [
+      "/history/the_beautiful_letters/s135.png",
+      "/history/ancient_and_modern_bulgarian_font/s82.png"
+    ]
+  },
+  {
+    "id": "002",
+    "category": {
+      "bg": "глаголица",
+      "en": "Glagolitic"
+    },
+    "title": {
+      "bg": "Зографско четвероевангелие",
+      "en": "Zograf Gospels"
+    },
+    "year": {
+      "bg": "10 век",
+      "en": "10th century"
+    },
+    "desc": {
+      "bg": "Глаголицата е изобретена през 863 г. от Свети Кирил (Константин Философ). Тя служи за разпространение на православната религия на Балканския полуостров. Азбуката се състои от 33 нови графични знака и напълно представя всички фонетични характеристики на старобългарския език.",
+      "en": "Glagolitic was invented in 863 by Saint Cyril (Constantine the Philosopher). It served to spread the Orthodox faith across the Balkan Peninsula. The alphabet consists of 33 new graphic characters and fully represents all the phonetic features of the Old Bulgarian language."
+    },
+    "images": [
+      "/history/book_across_centuries/1s204.png"
+    ]
+  },
+  {
+    "id": "003",
+    "category": {
+      "bg": "глаголица",
+      "en": "Glagolitic"
+    },
+    "title": {
+      "bg": "Асеманиево евангелие",
+      "en": "Assemani Gospel"
+    },
+    "year": {
+      "bg": "10 век",
+      "en": "10th century"
+    },
+    "desc": {
+      "bg": "Ако разгледаме графичното развитие на формата и стила на глаголицата, се очертават два различни стила: по-старият български/заоблен глаголически стил и хърватският или ъглов/удължен стил.",
+      "en": "If we examine the graphic development of the form and style of Glagolitic, two distinct styles emerge: the older Bulgarian/rounded Glagolitic style and the Croatian or angular/elongated style."
+    },
+    "images": [
+      "/history/book_across_centuries/s204.png",
+      "/history/pliska_alphabet/s148.png"
+    ]
+  },
+  {
+    "id": "004",
+    "category": {
+      "bg": "устав",
+      "en": "uncial"
+    },
+    "title": {
+      "bg": "Супрасълски сборник",
+      "en": "Codex Suprasliensis"
+    },
+    "year": {
+      "bg": "10 век",
+      "en": "10th century"
+    },
+    "desc": {
+      "bg": "Наречен още Ретков сборник. Той е включен в списъска на UNESCO за най-ценни паметници от световното писмено наследство.",
+      "en": "Also called the Retko Miscellany. It is included in UNESCO's list of the most valuable monuments of the world's documentary heritage."
+    },
+    "images": [
+      "/history/the_beautiful_letters/s139.png",
+      "/history/font_across_centuries/1s175.png"
+    ]
+  },
+  {
+    "id": "005",
+    "category": {
+      "bg": "устав",
+      "en": "uncial"
+    },
+    "title": {
+      "bg": "Остромирово евангелие",
+      "en": "Ostromir Gospels"
+    },
+    "year": {
+      "bg": "1057 г",
+      "en": "1057"
+    },
+    "desc": {
+      "bg": "Кирилицата произлиза от гръцкия монументален шрифт (8-9 век). 24 букви са заети от гръцката азбука, а 14 са изцяло нови. Историци установяват, че първите книги написани с кирилица са създадени след 893 г., когато започва „златният век“ на книгата и писмеността при управлението на цар Симеон I.",
+      "en": "Cyrillic derives from the Greek monumental script (8th–9th century). 24 letters were borrowed from the Greek alphabet, and 14 were entirely new. Historians have established that the first books written in Cyrillic were created after 893, when the “golden age” of the book and of letters began under the reign of Tsar Simeon I."
+    },
+    "images": [
+      "/history/book_across_centuries/1s195.png",
+      "/history/font_across_centuries/2s175.png"
+    ]
+  },
+  {
+    "id": "006",
+    "category": {
+      "bg": "устав",
+      "en": "uncial"
+    },
+    "title": {
+      "bg": "Евангелие Но. 9",
+      "en": "Gospel No. 9"
+    },
+    "year": {
+      "bg": "1300 г",
+      "en": "1300"
+    },
+    "desc": {
+      "bg": "Старобългарският устав, известен още като унциал, е най-старото вид писмо. На старобългарски устав означава „граница“, отнасящо се до ограничената височина на буквите. Стилът е симетричен, написан бавно и внимателно. Текстът не е разделен на думи и е прекъсван само от точки.",
+      "en": "The Old Bulgarian ustav, also known as uncial, is the oldest type of script. In Old Bulgarian, ustav means “boundary”, referring to the limited height of the letters. The style is symmetrical, written slowly and carefully. The text is not divided into words and is broken only by dots."
+    },
+    "images": [
+      "/history/book_across_centuries/s352.png"
+    ]
+  },
+  {
+    "id": "007",
+    "category": {
+      "bg": "устав",
+      "en": "uncial"
+    },
+    "title": {
+      "bg": "Иван-Александрово четвероевангелие",
+      "en": "Tetraevangelia of Tsar Ivan Alexander"
+    },
+    "year": {
+      "bg": "1365 г",
+      "en": "1365"
+    },
+    "desc": {
+      "bg": "Известно и като Лондонско евангелие, защото се съхранява в Британксия музей, то е един от най-ценните паметници на българската средновековна книжнина.",
+      "en": "Also known as the London Gospels, because it is kept in the British Museum, it is one of the most valuable monuments of Bulgarian medieval literature."
+    },
+    "images": [
+      "/history/book_across_centuries/XXV.png",
+      "/history/book_across_centuries/s356.png"
+    ]
+  },
+  {
+    "id": "008",
+    "category": {
+      "bg": ""
+    },
+    "title": {
+      "bg": "Османско владичество",
+      "en": "Ottoman rule"
+    },
+    "year": {
+      "bg": "14 век",
+      "en": "14th century"
+    },
+    "desc": {
+      "bg": "В продължение на повече от пет века България губи водещата си роля като център на славянската просвета и култура, а новият център се измества в Русия. Някои букви, липсващи в латинската азбука, не са били доразвити или оформени като малки букви.",
+      "en": "For more than five centuries Bulgaria lost its leading role as a centre of Slavic enlightenment and culture, and the new centre shifted to Russia. Some letters missing from the Latin alphabet were not further developed or shaped as lowercase forms."
+    },
+    "images": []
+  },
+  {
+    "id": "009",
+    "category": {
+      "bg": "бързопис",
+      "en": "cursive"
+    },
+    "title": {
+      "bg": "Евтимиев служебник от поп Герасим",
+      "en": "Euthymian Liturgical Book by Priest Gerasim"
+    },
+    "year": {
+      "bg": "14 век",
+      "en": "14th century"
+    },
+    "desc": {
+      "bg": "Софийският препис на Евтимиевия служебник е ръкопис преписан от поп Герасим, чиито характерни буквени форми се превръщат във важен образец за развитието на съвременната българска кирилица.",
+      "en": "The Sofia transcript of the Euthymian Liturgicon is a manuscript copied by Priest Gerasim, whose characteristic letterforms became an important model for the development of modern Bulgarian Cyrillic."
+    },
+    "images": [
+      "/history/other/ewtimiev%20slujebnik.JPG",
+      "/history/font_across_centuries/s177.png"
+    ]
+  },
+  {
+    "id": "010",
+    "category": {
+      "bg": "полуустав и декоративен устав",
+      "en": "semi-uncial and decorative uncial"
+    },
+    "title": {
+      "bg": "Кремиковско четвероевангелие",
+      "en": "Kremikovtsi Gospels"
+    },
+    "year": {
+      "bg": "1497 г",
+      "en": "1497"
+    },
+    "desc": {
+      "bg": "Полуустав, известен още като полуунциал, е вид опростяване на унциалната писменост, постигнато чрез по-бързо писане. Възникнал в края на 13 век след османското завоевание на България, той се разпространява едва през 15 и 16 век чрез християнски книги и текстове.",
+      "en": "Semi-uncial, also known as poluustav, is a simplification of uncial script achieved through faster writing. Emerging at the end of the 13th century after the Ottoman conquest of Bulgaria, it spread only in the 15th and 16th centuries through Christian books and texts."
+    },
+    "images": [
+      "/history/the_beautiful_letters/s161.png"
+    ]
+  },
+  {
+    "id": "011",
+    "category": {
+      "bg": "полуустав и декоративен устав",
+      "en": "semi-uncial and decorative uncial"
+    },
+    "title": {
+      "bg": "Шестоднев на Василий Велики",
+      "en": "Hexaemeron of Basil the Great"
+    },
+    "year": {
+      "bg": "15век",
+      "en": "15th century"
+    },
+    "desc": {
+      "bg": "Декоративният устав е разновидност на старобългарския уставен шрифт, използван предимно за заглавия и украса на ръкописи. Той запазва основните уставни форми на буквите, но ги обогатява с орнаменти, удължения и художествени елементи.",
+      "en": "The decorative uncial is a variety of the Old Bulgarian uncial script, used mainly for titles and the decoration of manuscripts. It preserves the basic uncial letterforms but enriches them with ornaments, extensions and artistic elements."
+    },
+    "images": [
+      "/history/book_across_centuries/XXVIII.png"
+    ]
+  },
+  {
+    "id": "012",
+    "category": {
+      "bg": "полуустав",
+      "en": "semi-uncial"
+    },
+    "title": {
+      "bg": "Бусинско евангелие",
+      "en": "Busin Gospel"
+    },
+    "year": {
+      "bg": "16 век",
+      "en": "16th century"
+    },
+    "desc": {
+      "bg": "Полууставът се развива под влиянието на Бързописа, когато писмеността става все по-разпространена в ежедневието, и се запазва в църковните книги през целия 18 и 19 век, въпреки влиянието на руската гражданска писменост.",
+      "en": "The semi-uncial developed under the influence of cursive, as writing became increasingly widespread in everyday life, and it was preserved in church books throughout the 18th and 19th centuries, despite the influence of the Russian civil script."
+    },
+    "images": [
+      "/history/book_across_centuries/s361.png"
+    ]
+  },
+  {
+    "id": "013",
+    "category": {
+      "bg": "печатен полуустав",
+      "en": "printed semi-uncial"
+    },
+    "title": {
+      "bg": "Абагар",
+      "en": "Abagar"
+    },
+    "year": {
+      "bg": "1651 г",
+      "en": "1651"
+    },
+    "desc": {
+      "bg": "Полуставът е използван и за отпечатването на първата печатна книга на кирилица „Осмогласник“ или „Октиох“ от Швайполд Феол през 1491 г., както и за първата българска печатна книга на новобългарски език „Абагар“ от Филип Станиславов през 1651 г.",
+      "en": "The semi-uncial was also used to print the first printed book in Cyrillic, the “Osmoglasnik” (Oktoih) by Schweipolt Fiol in 1491, as well as the first Bulgarian printed book in modern Bulgarian, “Abagar” by Filip Stanislavov in 1651."
+    },
+    "images": [
+      "/history/other/abagar.JPG"
+    ]
+  },
+  {
+    "id": "014",
+    "category": {
+      "bg": "бързопис",
+      "en": "cursive"
+    },
+    "title": {
+      "bg": "Миней за месец май",
+      "en": "Menaion for the Month of May"
+    },
+    "year": {
+      "bg": "1695 г",
+      "en": "1695"
+    },
+    "desc": {
+      "bg": "Барзопис, наричан още Скоропис, е курсивно писмо за бързо писане. То има малко естетически изисквания, тъй като е било използвано главно за лични бележки, писма  и документи.",
+      "en": "Cursive, also called skoropis, is a flowing script for fast writing. It had few aesthetic requirements, as it was used mainly for personal notes, letters and documents."
+    },
+    "images": [
+      "/history/font_across_centuries/2s178.png"
+    ]
+  },
+  {
+    "id": "015",
+    "category": {
+      "bg": "гражданска кирилица",
+      "en": "civil Cyrillic"
+    },
+    "title": {
+      "bg": "Граждански шрифт",
+      "en": "Civil Script"
+    },
+    "year": {
+      "bg": "1710 г",
+      "en": "1710"
+    },
+    "desc": {
+      "bg": "Руският цар Петър I смятал църковнославянската кирилица за неподходяща за модерното развитие и извършил радикална реформа на писмеността. През 1710 г. той въвел нов шрифт, създаден по образец на нидерландската антиква, създадена от амстердамски типографи, които не притежавали достатъчни езикови познания и опит с кирилицата. Петър I лично избирал конкретните форми на буквите измежду представените му варианти.",
+      "en": "The Russian Tsar Peter I considered Church Slavonic Cyrillic unsuitable for modern development and carried out a radical reform of the script. In 1710 he introduced a new typeface, modelled on the Dutch antiqua created by Amsterdam typographers who lacked sufficient linguistic knowledge of and experience with Cyrillic. Peter I personally chose the specific letterforms from among the variants presented to him."
+    },
+    "images": [
+      "/history/other/russ1.jpg"
+    ]
+  },
+  {
+    "id": "016",
+    "category": {
+      "bg": "бързопис",
+      "en": "cursive"
+    },
+    "title": {
+      "bg": "История Славянобългарска от Паисий Хилендарски",
+      "en": "Slavonic-Bulgarian History by Paisius of Hilendar"
+    },
+    "year": {
+      "bg": "1762 г",
+      "en": "1762"
+    },
+    "desc": {
+      "bg": "История славянобългарска се счита за началото на Българското възраждане. В нея Паисий представя историята на българския народ и призовава българите да съхраняват своя език, култура и национална чест.",
+      "en": "Istoriya Slavyanobolgarska (Slavonic-Bulgarian History) is considered the beginning of the Bulgarian National Revival. In it, Paisius presents the history of the Bulgarian people and calls on Bulgarians to preserve their language, culture and national honour."
+    },
+    "images": [
+      "/history/the_beautiful_letters/s165.png",
+      "/history/font_across_centuries/s178.png"
+    ]
+  },
+  {
+    "id": "017",
+    "category": {
+      "bg": "полуустав",
+      "en": "semi-uncial"
+    },
+    "title": {
+      "bg": "История Славянобългарска по препис на Софроний Врачански",
+      "en": "Slavonic-Bulgarian History, transcript by Sophronius of Vratsa"
+    },
+    "year": {
+      "bg": "1765 г",
+      "en": "1765"
+    },
+    "desc": {
+      "bg": "Преписът от Софроний Врачански е първото известно копие на произведението и има ключова роля за неговото разпространение.",
+      "en": "The transcript by Sophronius of Vratsa is the first known copy of the work and played a key role in its dissemination."
+    },
+    "images": [
+      "/history/other/sofronii%20prepis.JPG"
+    ]
+  },
+  {
+    "id": "018",
+    "category": {
+      "bg": "бързопис",
+      "en": "cursive"
+    },
+    "title": {
+      "bg": "Сборник на Дяк Велко Попович",
+      "en": "Miscellany of Deacon Velko Popovich"
+    },
+    "year": {
+      "bg": "18 век",
+      "en": "18th century"
+    },
+    "desc": {
+      "bg": "Страницата е богато украсена, в нея се виждат три вида шрифт - Заглавно-декоративен устав, полуустав и бързопис.",
+      "en": "The page is richly decorated; it displays three types of script — decorative title uncial, semi-uncial and cursive."
+    },
+    "images": [
+      "/history/the_beautiful_letters/s163.png"
+    ]
+  },
+  {
+    "id": "019",
+    "category": {
+      "bg": "печатна кирилица",
+      "en": "printed Cyrillic"
+    },
+    "title": {
+      "bg": "Bukvar",
+      "en": "Bukvar"
+    },
+    "year": {
+      "bg": "1824 г",
+      "en": "1824"
+    },
+    "desc": {
+      "bg": "След Освобождението България възприема новия руски граждански шрифт. „Буквар с различни поучения“ на Петър Берон е сред първите книги отпечатани в църковнославянски стил през 1824 г. и се използва като учебник десетилетия наред. Преходът от църковнославянските буквени форми към модерната антиква в България започва около 1825 г.",
+      "en": "After the Liberation, Bulgaria adopted the new Russian civil script. Petar Beron's “Primer with Various Instructions” was among the first books printed in the Church Slavonic style in 1824 and was used as a textbook for decades. The transition from Church Slavonic letterforms to modern antiqua in Bulgaria began around 1825."
+    },
+    "images": [
+      "/history/other/beron%20bukvar.png"
+    ]
+  },
+  {
+    "id": "020",
+    "category": {
+      "bg": "съвременна кирилица",
+      "en": "modern Cyrillic"
+    },
+    "title": {
+      "bg": "Тлъста Антиква, Олга Йончева",
+      "en": "Bold Antiqua, Olga Yoncheva"
+    },
+    "year": {
+      "bg": "1968 г",
+      "en": "1968"
+    },
+    "desc": {
+      "bg": "След 9 септември 1944 г. България попада под силното влияние на Съветския съюз, а комунистическият режим оказва значително въздействие върху развитието на кирилицата и печатното дело. През периода 1946–1990 г. шрифтът се превръща във важен инструмент на пропагандата, което стимулира създаването на нови графични решения и интереса към типографията.",
+      "en": "After 9 September 1944, Bulgaria came under the strong influence of the Soviet Union, and the communist regime had a significant impact on the development of Cyrillic and printing. During the period 1946–1990, type became an important instrument of propaganda, which stimulated the creation of new graphic solutions and interest in typography."
+    },
+    "images": [
+      "/history/ancient_and_modern_bulgarian_font/s270.png"
+    ]
+  },
+  {
+    "id": "021",
+    "category": {
+      "bg": "съвременна кирилица",
+      "en": "modern Cyrillic"
+    },
+    "title": {
+      "bg": "Бузлуджа, Кирил Гогов",
+      "en": "Buzludzha, Kiril Gogov"
+    },
+    "year": {
+      "bg": "1979 г",
+      "en": "1979"
+    },
+    "desc": {
+      "bg": "От средата на 50-те години започва активно обсъждане на формата на българските малки букви и необходимостта от създаване на шрифтове с национален характер. През 60-те и 70-те години български художници и типографи разработват нови принципи на шрифтов дизайн, основани на традициите на ръкописната кирилица, а не на руската гражданска азбука. Този период често се определя като ренесанс на българското шрифтово изкуство и поставя основите на съвременната българска типография.",
+      "en": "From the mid-1950s, an active discussion began about the form of Bulgarian lowercase letters and the need to create typefaces with a national character. In the 1960s and 1970s, Bulgarian artists and typographers developed new principles of type design based on the traditions of handwritten Cyrillic rather than the Russian civil alphabet. This period is often described as a renaissance of Bulgarian type art and laid the foundations of modern Bulgarian typography."
+    },
+    "images": [
+      "/history/ancient_and_modern_bulgarian_font/s338.png"
+    ]
+  },
+  {
+    "id": "022",
+    "category": {
+      "bg": "съвременна кирилица",
+      "en": "modern Cyrillic"
+    },
+    "title": {
+      "bg": "Средец светъл, Тодор Варджиев",
+      "en": "Sredets Svetal, Todor Vardzhiev"
+    },
+    "year": {
+      "bg": "1979 г",
+      "en": "1979"
+    },
+    "desc": {
+      "bg": "Част от тази революционна инициатива са Борис Ангелушев, Васил Бараков, Александър Поплилов, Евгени Клинчаров, Тотю Данов, Милка Пейкова, Олга Йончева, Иван Кьосев, Владислав Паскалев и много други.",
+      "en": "Part of this revolutionary initiative were Boris Angelushev, Vasil Barakov, Aleksandar Poplilov, Evgeni Klincharov, Totyu Danov, Milka Peykova, Olga Yoncheva, Ivan Kyosev, Vladislav Paskalev and many others."
+    },
+    "images": [
+      "/history/ancient_and_modern_bulgarian_font/s185.png"
+    ]
+  }
+]

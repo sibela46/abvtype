@@ -1,0 +1,108 @@
+/* Ossem is the site-wide default font (used everywhere Beron isn't), with
+   Sofia Sans as the fallback for browsers where Ossem fails to load. */
+@font-face {
+  font-family: 'Ossem';
+  src: url('/fontsforweb/Ossem-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SofiaSans';
+  src: url('/SofiaSans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: 'Ossem', 'SofiaSans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Mobile burger menu (shared by every page) ──────────────────────────── */
+.burger {
+  display: none; /* shown only on narrow screens */
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.burger span {
+  display: block;
+  width: 1.7rem;
+  height: 2px;
+  background: #0a0a0a;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+
+/* Lines fold into an X while the menu is open */
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 820px) {
+  .burger { display: inline-flex; }
+
+  /* The three nav links collapse into a dropdown panel toggled by the burger.
+     Scoped under the bar so they outrank each page's base .menu/.nav-links. */
+  .topnav .nav-links,
+  .tf .topbar .menu,
+  .cat .topbar .menu,
+  .submit .topbar .menu {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    display: none; /* hidden until toggled open */
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.1rem;
+    margin: 0;
+    padding: 1.1rem 1.4rem;
+    background: #0a0a0a;
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+    z-index: 50;
+  }
+
+  .topnav .nav-links.open,
+  .tf .topbar .menu.open,
+  .cat .topbar .menu.open,
+  .submit .topbar .menu.open {
+    display: flex;
+  }
+
+  /* Links read light against the dark dropdown */
+  .topnav .nav-links a,
+  .tf .topbar .menu a,
+  .cat .topbar .menu a,
+  .submit .topbar .menu a {
+    color: #f0f0f0;
+    font-size: 1.25rem;
+    white-space: nowrap;
+  }
+
+  .tf .topbar .menu a.active,
+  .cat .topbar .menu a.active,
+  .submit .topbar .menu a.active {
+    color: rgba(240, 240, 240, 0.5);
+  }
+}
