@@ -25,9 +25,14 @@
 
 .page {
   width: 100%;
+  height: 100vh;
   background: #b8bfc8;
   overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
+  /* Snap to the hero and the black about section as you scroll down;
+     proximity (not mandatory) leaves the lower sections free-scrolling. */
+  scroll-snap-type: y proximity;
 }
 
 /* ── Top nav ── */
@@ -56,7 +61,7 @@
 
 .logo {
   font-family: 'Beron', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 3rem;
   color: #000;
   text-decoration: none;
@@ -124,12 +129,13 @@
   position: relative;
   width: 100vw;
   height: 100vh;
+  scroll-snap-align: start;
 }
 
 .letters-group {
   position: absolute;
   top: 5%;
-  left: 55%;
+  left: 50%;
   transform: translateX(-50%);
   text-align: center;
   width: 100%;
@@ -139,17 +145,17 @@
   display: block;
   position: relative;
   z-index: 3;
-  width: clamp(20rem, 62vw, 84rem);
+  width: clamp(24rem, 74vw, 100rem);
   height: auto;
   margin: 0 auto;
 }
 
 .whale-img {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 58%;
+  left: 53%;
   transform: translate(-50%, -50%);
-  width: 70%;
+  width: 88%;
   pointer-events: none;
   z-index: 2;
 }
@@ -175,6 +181,7 @@
   display: flex;
   flex-direction: column;
   padding-bottom: 1.5rem;
+  scroll-snap-align: start;
 }
 
 /* Black panel behind the strip + text, ~65% of the page width */
@@ -338,6 +345,12 @@
   -webkit-hyphens: auto;
 }
 
+/* Tighten the gap between a column image and the text directly beneath it
+   (column gap is 1.5rem; pull the text up so the pair reads as a unit). */
+.font-col > .font-text {
+  margin-top: -1.75rem;
+}
+
 /* Standalone text directly under a full-width pair */
 .font-section > .font-text {
   margin-top: 1.5rem;
@@ -440,7 +453,6 @@
 .about-heading::first-letter,
 .font-heading::first-letter,
 .sources-heading::first-letter,
-.tagline::first-letter,
 .about-text::first-letter,
 .font-text::first-letter {
   font-family: 'Beron', sans-serif;

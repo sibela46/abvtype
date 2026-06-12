@@ -37,6 +37,10 @@ jobs:
       - name: Build
         run: npm run build
         env:
+          # GitHub Pages serves this repo under the /abvtype/ project subpath,
+          # so asset URLs must be prefixed with it. (STRATO serves from the
+          # domain root and leaves VITE_BASE unset, defaulting to '/'.)
+          VITE_BASE: /abvtype/
           # Point the submit form at a deployed mail server, if you have one.
           # Set this as a repo variable (Settings → Secrets and variables →
           # Actions → Variables). Leave unset and the form is disabled on Pages.

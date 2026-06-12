@@ -36,6 +36,53 @@ function History() {
     return () => el.removeEventListener('scroll', onScroll)
   }, [])
 
+  // The text column normally stretches to the full image stack, so its
+  // bottom-aligned text lands at the bottom of the LAST image. Cap its height to
+  // the bottom of the FIRST image so the text aligns there instead.
+  useEffect(() => {
+    const sections = sectionRefs.current.filter(Boolean)
+    const measure = () => {
+      sections.forEach((section) => {
+        const imageCol = section.querySelector('.cat-item-image')
+        const textCol = section.querySelector('.cat-item-text')
+        if (!textCol) return
+        const firstImg = imageCol && imageCol.querySelector('.cat-image-figure img')
+        if (!firstImg) {
+          textCol.style.height = ''
+          textCol.style.alignSelf = ''
+          return
+        }
+        const h = firstImg.getBoundingClientRect().bottom - imageCol.getBoundingClientRect().top
+        if (h > 0) {
+          textCol.style.height = `${h}px`
+          textCol.style.alignSelf = 'start'
+        }
+      })
+    }
+
+    measure()
+    window.addEventListener('resize', measure)
+    const loadHandlers = []
+    sections.forEach((s) =>
+      s.querySelectorAll('.cat-item-image img').forEach((img) => {
+        if (!img.complete) {
+          img.addEventListener('load', measure)
+          loadHandlers.push(img)
+        }
+      }),
+    )
+    const ro = new ResizeObserver(measure)
+    sections.forEach((s) => {
+      const c = s.querySelector('.cat-item-image')
+      if (c) ro.observe(c)
+    })
+    return () => {
+      window.removeEventListener('resize', measure)
+      loadHandlers.forEach((img) => img.removeEventListener('load', measure))
+      ro.disconnect()
+    }
+  }, [lang])
+
   const goTo = (i) => {
     const target = sectionRefs.current[i]
     if (target) target.scrollIntoView({ behavior: 'smooth' })

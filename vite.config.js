@@ -15,9 +15,11 @@ function historyData() {
 }
 
 export default defineConfig({
-  // Project site is served from https://sibela46.github.io/abvtype/, so all
-  // built asset URLs must be prefixed with this base path.
-  base: '/abvtype/',
+  // Base path for built asset URLs. Defaults to '/' for serving from a domain
+  // root (e.g. https://abvtype.com on STRATO). The GitHub Pages deploy sets
+  // VITE_BASE=/abvtype/ because that site lives under a project subpath
+  // (https://sibela46.github.io/abvtype/).
+  base: process.env.VITE_BASE ?? '/',
   plugins: [react(), historyData()],
   server: {
     proxy: {

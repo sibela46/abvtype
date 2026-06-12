@@ -4,7 +4,7 @@
   "nav.submit":      { "en": "Submit",       "bg": "Качи Шрифт" },
 
   "brand.abc":            { "en": "АБВ",                      "bg": "АБВ" },
-  "landing.tagline":      { "en": "Open Source Type Foundry", "bg": "Шрифтова библиотека за свободно ползване" },
+  "landing.tagline":      { "en": "Open Source Type Foundry", "bg": "Open Source Type Foundry" },
   "landing.aboutHeading": { "en": "About the project",        "bg": "Проектът" },
   "landing.fontHeading":  { "en": "The Font",                 "bg": "Шрифтът" },
   "landing.sourcesHeading": { "en": "Sources and online resources", "bg": "Източници и онлайн ресурси" },

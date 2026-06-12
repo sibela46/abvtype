@@ -30,7 +30,7 @@
 
 .submit .logo {
   font-family: 'Beron', sans-serif;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 3rem;
   color: #000;
   text-decoration: none;
@@ -255,7 +255,7 @@
 .license-col p,
 .license-list li,
 .license-disclaimer p {
-  font-size: 1.18rem;
+  font-size: 1rem;
   line-height: 1.25;
   margin: 0 0 0.9rem;
 }

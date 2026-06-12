@@ -1,0 +1,13 @@
+# ABC Type Foundry — Apache config for STRATO webhosting.
+
+RewriteEngine On
+
+# The React form POSTs to /api/submit; send that to the PHP handler. The site
+# uses hash routing (#/type, #/history, …) so no other rewrites are needed —
+# every page is served by the single index.html.
+RewriteRule ^api/submit/?$ api/submit.php [L]
+
+# Force HTTPS. Uncomment the two lines below AFTER you've enabled the free SSL
+# certificate in the STRATO panel, otherwise visitors hit a redirect loop.
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { useState, useRef, useLayoutEffect } from 'react'
 import './App.css'
 import { useLang } from './i18n'
 import { asset } from './asset'
 
 const aboutImages = [
-  { src: '/about/about-01-coolfonts.jpg', alt: 'I want to use cool fonts на български', height: '42vh' },
-  { src: '/about/about-02-azbuka.png', alt: 'Cyrillic alphabet pages from the Beron primer', height: '44vh' },
-  { src: '/about/about-03-glyphs.png', alt: 'Beron typeface in progress in the Glyphs editor', height: '31vh' },
-  { src: '/about/about-04-beron-otf.png', alt: 'Beron.otf font file', height: '13vh' },
-  { src: '/about/about-05-document.png', alt: 'Cyrillic Matters — thesis document', height: '40vh' },
-  { src: '/about/about-06-woodtype.png', alt: 'Hand-cut type and prints', height: '35vh' },
+  { src: '/about/about-01-coolfonts.jpg', alt: 'I want to use cool fonts на български', height: '55vh' },
+  { src: '/about/about-02-azbuka.png', alt: 'Cyrillic alphabet pages from the Beron primer', height: '57vh' },
+  { src: '/about/about-03-glyphs.png', alt: 'Beron typeface in progress in the Glyphs editor', height: '43vh' },
+  { src: '/about/about-04-beron-otf.png', alt: 'Beron.otf font file', height: '26vh' },
+  { src: '/about/about-05-document.png', alt: 'Cyrillic Matters — thesis document', height: '53vh' },
+  { src: '/about/about-06-woodtype.png', alt: 'Hand-cut type and prints', height: '48vh' },
 ]
 
 const aboutTextKeys = [
@@ -66,6 +66,113 @@ const sourceLinksRight = [
   'fontrevival.com/',
 ]
 
+/* The About strip: two rows (images + texts) sharing one horizontal scroller.
+   Each row is rendered as three identical copies and its gap is tuned so both
+   rows span the exact same repeat width, letting a single scrollLeft wrap both
+   seamlessly — scroll past the last item and the first comes back into view. */
+function AboutStrip() {
+  const { t } = useLang()
+  const stripRef = useRef(null)
+  const imagesRowRef = useRef(null)
+  const textsRowRef = useRef(null)
+  const periodRef = useRef(0)
+  const initializedRef = useRef(false)
+
+  useLayoutEffect(() => {
+    const strip = stripRef.current
+    const imgRow = imagesRowRef.current
+    const txtRow = textsRowRef.current
+    if (!strip || !imgRow || !txtRow) return
+
+    // Size both rows to a common period and recentre the loop on the middle copy.
+    const measure = () => {
+      const remPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
+      const baseGap = 4 * remPx
+      const ki = aboutImages.length
+      const kt = aboutTextKeys.length
+      const sumWidths = (row, k) =>
+        Array.from(row.children)
+          .slice(0, k)
+          .reduce((acc, el) => acc + el.getBoundingClientRect().width, 0)
+      const imgWidth = sumWidths(imgRow, ki)
+      const txtWidth = sumWidths(txtRow, kt)
+      if (imgWidth === 0 || txtWidth === 0) return // not laid out / images not loaded yet
+
+      const period = Math.max(imgWidth + ki * baseGap, txtWidth + kt * baseGap)
+      const imgGap = (period - imgWidth) / ki
+      const txtGap = (period - txtWidth) / kt
+      imgRow.style.gap = `${imgGap}px`
+      imgRow.style.paddingRight = `${imgGap}px`
+      txtRow.style.gap = `${txtGap}px`
+      txtRow.style.paddingRight = `${txtGap}px`
+      periodRef.current = period
+
+      if (!initializedRef.current) {
+        strip.scrollLeft = period // start on the middle copy so it loops both ways
+        initializedRef.current = true
+      }
+    }
+
+    // Keep the scroll position within the middle copy, wrapping at either edge.
+    const handleScroll = () => {
+      const period = periodRef.current
+      if (!period) return
+      if (strip.scrollLeft >= 2 * period) strip.scrollLeft -= period
+      else if (strip.scrollLeft < period) strip.scrollLeft += period
+    }
+
+    measure()
+    strip.addEventListener('scroll', handleScroll, { passive: true })
+    const ro = new ResizeObserver(measure) // re-measure as images load / on resize
+    ro.observe(imgRow)
+    ro.observe(txtRow)
+    window.addEventListener('resize', measure)
+    return () => {
+      strip.removeEventListener('scroll', handleScroll)
+      ro.disconnect()
+      window.removeEventListener('resize', measure)
+    }
+  }, [])
+
+  const copies = [0, 1, 2]
+
+  return (
+    <section className="about-section">
+      <div className="about-backdrop" />
+
+      <h2 className="about-heading">{t('landing.aboutHeading')}</h2>
+
+      <div className="scroll-strip" ref={stripRef}>
+        <div className="strip-row strip-images" ref={imagesRowRef}>
+          {copies.map((c) =>
+            aboutImages.map((img) => (
+              <img
+                src={asset(img.src)}
+                alt={img.alt}
+                className="strip-img"
+                style={{ height: img.height }}
+                key={`${img.src}-${c}`}
+                draggable={false}
+                aria-hidden={c !== 0}
+              />
+            )),
+          )}
+        </div>
+        <div className="strip-row strip-texts" ref={textsRowRef}>
+          {copies.map((c) =>
+            aboutTextKeys.map((key, i) => (
+              <div className="about-item-text" key={`${key}-${c}`} aria-hidden={c !== 0}>
+                <div className="about-number">{String(i + 1).padStart(3, '0')}</div>
+                <p className="about-text">{t(key)}</p>
+              </div>
+            )),
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Landing() {
   const { t, lang, toggle } = useLang()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -120,34 +227,8 @@ function Landing() {
         <p className="tagline">{t('landing.tagline')}</p>
       </main>
 
-      {/* About section with horizontally scrollable images */}
-      <section className="about-section">
-        <div className="about-backdrop" />
-
-        <h2 className="about-heading">{t('landing.aboutHeading')}</h2>
-
-        <div className="scroll-strip">
-          <div className="strip-row strip-images">
-            {aboutImages.map((img) => (
-              <img
-                src={asset(img.src)}
-                alt={img.alt}
-                className="strip-img"
-                style={{ height: img.height }}
-                key={img.src}
-              />
-            ))}
-          </div>
-          <div className="strip-row strip-texts">
-            {aboutTextKeys.map((key, i) => (
-              <div className="about-item-text" key={key}>
-                <div className="about-number">{String(i + 1).padStart(3, '0')}</div>
-                <p className="about-text">{t(key)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* About section with horizontally scrollable, looping images + texts */}
+      <AboutStrip />
 
       {/* The Font section */}
       <section className="font-section">
