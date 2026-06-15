@@ -2,6 +2,7 @@ import { useState, useRef, useLayoutEffect } from 'react'
 import './App.css'
 import { useLang } from './i18n'
 import { asset } from './asset'
+import SiteFooter from './SiteFooter'
 
 const aboutImages = [
   { src: '/about/about-01-coolfonts.jpg', alt: 'I want to use cool fonts на български', height: '55vh' },
@@ -352,11 +353,7 @@ function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="site-footer">
-        <p>{t('footer.project')}</p>
-        <p>{t('footer.credits')}</p>
-        <p>{t('footer.year')}</p>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

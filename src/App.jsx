@@ -3,6 +3,7 @@ import Landing from './Landing'
 import TypeFoundry from './TypeFoundry'
 import History from './History'
 import Submit from './Submit'
+import Impressum from './Impressum'
 import { LanguageProvider } from './i18n'
 
 function getRoute() {
@@ -26,6 +27,7 @@ function App() {
   if (route === '/type') page = <TypeFoundry />
   else if (route === '/history') page = <History />
   else if (route === '/submit') page = <Submit />
+  else if (route === '/impressum') page = <Impressum />
 
   return <LanguageProvider>{page}</LanguageProvider>
 }

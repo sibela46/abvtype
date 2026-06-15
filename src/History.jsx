@@ -3,6 +3,7 @@ import './History.css'
 import data from './history-data.json'
 import { useLang, pick } from './i18n'
 import { asset } from './asset'
+import SiteFooter from './SiteFooter'
 
 // Normalise the generated data (images may be a string or array)
 const ITEMS = data.map((e) => ({
@@ -12,15 +13,15 @@ const ITEMS = data.map((e) => ({
 
 function History() {
   const { t, lang, toggle } = useLang()
-  const contentRef = useRef(null)
+  const scrollRef = useRef(null)
   const sectionRefs = useRef([])
   const [active, setActive] = useState(0)
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenu = () => setMenuOpen(false)
 
-  // Track which section is in view and update the active list item
+  // Track which section is in view (the .cat container scrolls) and update the active item
   useEffect(() => {
-    const el = contentRef.current
+    const el = scrollRef.current
     if (!el) return
     const onScroll = () => {
       // Pick the section whose top has passed a marker near the viewport top
@@ -33,6 +34,7 @@ function History() {
       setActive(idx)
     }
     el.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
     return () => el.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -89,7 +91,7 @@ function History() {
   }
 
   return (
-    <div className="cat">
+    <div className="cat" ref={scrollRef}>
       {/* Top navigation bar (same as the other pages) */}
       <header className="topbar">
         <a href="#/" className="logo" onClick={closeMenu}>{t('brand.abc')}</a>
@@ -137,8 +139,8 @@ function History() {
           </div>
         </aside>
 
-        {/* Scrolling content area */}
-        <main className="cat-content" ref={contentRef}>
+        {/* Content area (flows in the page scroll) */}
+        <main className="cat-content">
           {ITEMS.map((item, i) => {
             const title = pick(item.title, lang)
             const year = pick(item.year, lang)
@@ -174,6 +176,8 @@ function History() {
           })}
         </main>
       </div>
+
+      <SiteFooter theme="light" />
     </div>
   )
 }

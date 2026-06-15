@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react'
 import './Submit.css'
 import { useLang } from './i18n'
+import SiteFooter from './SiteFooter'
 
 // Submissions go to our own backend (server/index.js), which emails them to
-// abvtype@gmail.com with the font file attached. In dev, Vite proxies /api to
+// webmaster@abvtype.com with the font file attached. In dev, Vite proxies /api to
 // the local mail server (see vite.config.js). On a static host like GitHub
 // Pages there is no backend, so set VITE_API_BASE at build time to the full
 // URL of a deployed mail server (e.g. https://abvtype-api.onrender.com).
@@ -192,6 +193,8 @@ function Submit() {
           {status === 'error' && <p className="submit-status submit-status-err">{t('submit.error')}</p>}
         </form>
       </main>
+
+      <SiteFooter theme="light" />
     </div>
   )
 }

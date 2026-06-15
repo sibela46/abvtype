@@ -11,8 +11,8 @@
 .submit {
   width: 100%;
   min-height: 100vh;
-  background: #b8bfc8;
-  color: #000;
+  background: var(--color-bg);
+  color: var(--color-black);
   font-family: 'Ossem', 'SofiaSans', system-ui, sans-serif;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@
   font-family: 'Beron', sans-serif;
   font-weight: 400;
   font-size: 3rem;
-  color: #000;
+  color: var(--color-black);
   text-decoration: none;
   cursor: pointer;
 }
@@ -47,13 +47,13 @@
 }
 
 .submit .menu a {
-  color: #000;
+  color: var(--color-black);
   text-decoration: none;
   font-size: 1.15rem;
   font-weight: 400;
 }
 
-.submit .menu a.active { color: rgba(0, 0, 0, 0.4); }
+.submit .menu a.active { color: rgba(var(--rgb-black), 0.4); }
 .submit .menu a:hover { opacity: 0.5; }
 
 /* ── Form area ── */
@@ -86,27 +86,27 @@
   box-sizing: border-box;
   font-family: inherit;
   font-size: 1.3rem;
-  color: #000;
+  color: var(--color-black);
   background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(var(--rgb-black), 0.35);
   border-radius: 999px;
   padding: 1.1rem 1.75rem;
 }
 
-.submit-field::placeholder { color: rgba(0, 0, 0, 0.45); }
+.submit-field::placeholder { color: rgba(var(--rgb-black), 0.45); }
 
 .submit-field:focus {
   outline: none;
-  border-color: rgba(0, 0, 0, 0.7);
+  border-color: rgba(var(--rgb-black), 0.7);
 }
 
 /* File picker (a button that looks like an input) */
 .submit-file {
   text-align: left;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.45);
+  color: rgba(var(--rgb-black), 0.45);
 }
-.submit-file:hover { border-color: rgba(0, 0, 0, 0.55); }
+.submit-file:hover { border-color: rgba(var(--rgb-black), 0.55); }
 
 /* Message is a taller, rounded-rectangle textarea */
 .submit-message {
@@ -122,21 +122,21 @@
   justify-content: space-between;
   gap: 1rem;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(var(--rgb-black), 0.6);
 }
-.submit-agree:hover { border-color: rgba(0, 0, 0, 0.55); }
+.submit-agree:hover { border-color: rgba(var(--rgb-black), 0.55); }
 
 .submit-check {
   font-size: 1.3rem;
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(var(--rgb-black), 0.3);
   flex-shrink: 0;
   transition: color 0.15s ease;
 }
 .submit-agree.checked {
-  color: #000;
-  border-color: rgba(0, 0, 0, 0.7);
+  color: var(--color-black);
+  border-color: rgba(var(--rgb-black), 0.7);
 }
-.submit-agree.checked .submit-check { color: #000; }
+.submit-agree.checked .submit-check { color: var(--color-black); }
 
 /* Alert shown when the user tries to tick before opening the license */
 .submit-alert {
@@ -144,7 +144,7 @@
   text-align: center;
   font-size: 0.95rem;
   font-weight: 500;
-  color: #8a1f1f;
+  color: var(--color-error);
 }
 
 /* Submit button: filled pill */
@@ -152,15 +152,15 @@
   width: 100%;
   font-family: inherit;
   font-size: 1.3rem;
-  color: #000;
-  background: rgba(255, 255, 255, 0.45);
+  color: var(--color-black);
+  background: rgba(var(--rgb-white), 0.45);
   border: none;
   border-radius: 999px;
   padding: 1.1rem 1.75rem;
   cursor: pointer;
   transition: background 0.15s ease, opacity 0.15s ease;
 }
-.submit-button:hover { background: rgba(255, 255, 255, 0.65); }
+.submit-button:hover { background: rgba(var(--rgb-white), 0.65); }
 .submit-button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -172,8 +172,8 @@
   font-size: 1rem;
   margin: 0;
 }
-.submit-status-ok { color: #1a5e2a; }
-.submit-status-err { color: #8a1f1f; }
+.submit-status-ok { color: var(--color-success); }
+.submit-status-err { color: var(--color-error); }
 
 /* ── License box (collapsible: title + preview, arrow expands) ── */
 .license-box {
@@ -182,10 +182,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 2.5rem 3rem 2.25rem;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(var(--rgb-black), 0.25);
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #000;
+  background: rgba(var(--rgb-white), 0.08);
+  color: var(--color-black);
 }
 
 /* Arrow toggle pinned to the top-right of the box */
@@ -202,7 +202,7 @@
   padding: 0;
   background: none;
   border: 0;
-  color: #000;
+  color: var(--color-black);
   cursor: pointer;
 }
 .license-toggle:hover { opacity: 0.6; }

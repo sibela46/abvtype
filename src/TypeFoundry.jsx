@@ -1,6 +1,7 @@
 import { useState, useRef, useLayoutEffect } from 'react'
 import './TypeFoundry.css'
 import { useLang } from './i18n'
+import SiteFooter from './SiteFooter'
 
 /* Shrink a sample-text paragraph's font-size until it fits its fixed-size box,
    so the specimen text is fully contained without scrolling. Re-runs when the
@@ -95,12 +96,13 @@ function useFitChar(family, ch) {
 
 const FONTS = [
   { family: 'BeronBuch', file: '/BeronBuch-Regular.otf',           name: 'Beron Buch', author: 'Antonia Danailova' },
-  { family: 'SofiaSans', file: '/SofiaSans-VariableFont_wght.ttf', name: 'Sofia Sans', author: 'Antonia Danailova' },
-  { family: 'Oi',        file: '/fontsforweb/Oi-Regular.ttf',      name: 'Oi',         author: 'Antonia Danailova' },
-  { family: 'Ossem',     file: '/fontsforweb/Ossem-Regular.otf',   name: 'Ossem',      author: 'Antonia Danailova' },
+  { family: 'SofiaSans', file: '/SofiaSans-VariableFont_wght.ttf', name: 'Sofia Sans', author: 'Botio Nikoltchev, Ani Petrova' },
+  { family: 'Oi',        file: '/fontsforweb/Oi-Regular.ttf',      name: 'Oi',         author: 'Kostas Bartsokas' },
+  { family: 'Ossem',     file: '/fontsforweb/Ossem-Regular.otf',   name: 'Ossem',      author: 'Kiril Semkov' },
   { family: 'Tochka12',  file: '/fontsforweb/Tochka12.otf',        name: 'Tochka12',   author: 'Antonia Danailova' },
-  { family: 'Veleka',    file: '/fontsforweb/Veleka-Regular.otf',  name: 'Veleka',     author: 'Antonia Danailova' },
-  { family: 'Yuliana',   file: '/fontsforweb/Yuliana-Regular.otf', name: 'Yuliana',    author: 'Antonia Danailova' },
+  { family: 'Veleka',    file: '/fontsforweb/Veleka-Regular.otf',  name: 'Veleka',     author: 'Stefan Peev' },
+  { family: 'Yuliana',   file: '/fontsforweb/Yuliana-Regular.otf', name: 'Yuliana',    author: 'Anonymous' },
+  { family: 'Azbuki',    file: '/fontsforweb/Azbuki-Regular.otf', name: 'Azbuki',    author: 'Anita Rupova' }
 ]
 
 function DownloadIcon() {
@@ -200,11 +202,16 @@ function TypeFoundry() {
         ))}
       </main>
 
-      <footer className="tf-license">
-        <h2 className="tf-license-title">{t('license.title')}</h2>
-        <p className="tf-license-line">{t('license.version')}</p>
-        <p className="tf-license-line">{t('license.date')}</p>
-      </footer>
+      {/* Licence heading only */}
+      <section className="tf-license">
+        <div className="tf-license-head">
+          <h2 className="tf-license-title">{t('license.title')}</h2>
+          <p className="tf-license-line">{t('license.version')}</p>
+          <p className="tf-license-line">{t('license.date')}</p>
+        </div>
+      </section>
+
+      <SiteFooter theme="light" />
     </div>
   )
 }
