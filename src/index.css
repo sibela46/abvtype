@@ -74,6 +74,14 @@ html, body {
   margin: 0 auto;
 }
 
+/* Same ornament reused above the About section; pulled up into the hero's
+   bottom so it's visible in the first viewport without scrolling */
+.about-mark {
+  position: relative;
+  z-index: 10;
+  margin: -10rem auto 10rem;
+}
+
 /* ── Site footer (shared by every page via <SiteFooter />) ───────────────── */
 .site-footer {
   position: relative; /* anchor for the right-aligned copyright */

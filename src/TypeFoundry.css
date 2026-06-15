@@ -269,34 +269,24 @@
     position: relative; /* anchor for the burger dropdown */
     gap: 1rem;
   }
-  .tf .spec-head {
-    position: static;
-    width: auto;
-    margin-bottom: 0.75rem;
-  }
+  /* Keep the three panels overlapping horizontally (as on desktop) instead of
+     stacking them vertically; just shrink the box so it fits a phone screen. */
   .tf .spec-body {
-    height: auto;
-    min-height: 0;
-    display: flex;
-    /* DOM order is text → specimen → char; reverse it so the single-letter
-       (А) panel comes first, then the alphabet, then the sample text */
-    flex-direction: column-reverse;
-  }
-  /* stack the three panels vertically on narrow screens */
-  .tf .spec-layer {
-    position: relative;
-    left: 0 !important;
-    width: 100% !important;
-    margin-bottom: 1rem;
-  }
-  .tf .spec-layer--char {
     height: 40vh;
-  }
-  .tf .spec-layer--specimen,
-  .tf .spec-layer--text {
-    height: auto;
+    min-height: 280px;
   }
   .tf .spec-layer--char span {
-    font-size: clamp(10rem, 30vh, 18rem);
+    font-size: clamp(6rem, 28vh, 18rem);
+  }
+  /* Stretch the header over the full card height and stack it as a column so
+     the name/download stay at the top and the author drops to the bottom. */
+  .tf .spec-head {
+    bottom: 1.5rem;
+    flex-direction: column;
+    pointer-events: none; /* let touches pass through to the panels below */
+  }
+  .tf .spec-id,
+  .tf .spec-author {
+    pointer-events: auto;
   }
 }

@@ -30,9 +30,8 @@
   overflow-x: hidden;
   overflow-y: auto;
   position: relative;
-  /* Snap to the hero and the black about section as you scroll down;
-     proximity (not mandatory) leaves the lower sections free-scrolling. */
-  scroll-snap-type: y proximity;
+  /* The hero ⇄ about snap is handled in JS (see Landing.jsx) so it can trigger
+     after a small scroll without grabbing the lower sections; no CSS snap. */
 }
 
 /* ── Top nav ── */
@@ -148,12 +147,13 @@
   width: clamp(24rem, 74vw, 100rem);
   height: auto;
   margin: 0 auto;
+  transform: translateX(-5%);
 }
 
 .whale-img {
   position: absolute;
   top: 50%;
-  left: 55%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 70%;
   pointer-events: none;
@@ -163,8 +163,8 @@
 /* ── Tagline ── */
 .tagline {
   position: absolute;
-  bottom: 18%;
-  right: 4rem;
+  bottom: 25%;
+  right: 15rem;
   font-size: clamp(1rem, 2.5vw, 2rem);
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -543,7 +543,7 @@
   .tagline {
     right: 50%;
     transform: translateX(50%);
-    bottom: 12%;
+    bottom: 25%;
     text-align: center;
     width: max-content;
     max-width: 90vw;

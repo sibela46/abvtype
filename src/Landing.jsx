@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect } from 'react'
+import { useState, useRef, useLayoutEffect, useEffect } from 'react'
 import './App.css'
 import { useLang } from './i18n'
 import { asset } from './asset'
@@ -88,7 +88,8 @@ function AboutStrip() {
     // Size both rows to a common period and recentre the loop on the middle copy.
     const measure = () => {
       const remPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
-      const baseGap = 4 * remPx
+      const isMobile = window.matchMedia('(max-width: 820px)').matches
+      const baseGap = (isMobile ? 3 : 10) * remPx
       const ki = aboutImages.length
       const kt = aboutTextKeys.length
       const sumWidths = (row, k) =>
@@ -178,9 +179,74 @@ function Landing() {
   const { t, lang, toggle } = useLang()
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenu = () => setMenuOpen(false)
+  const pageRef = useRef(null)
+
+  // Soft snap between the hero and the About section: a small scroll (≈15% of
+  // the viewport) commits to the next/previous panel, while everything below
+  // About scrolls freely. This replaces CSS scroll-snap for that transition so
+  // the snap can trigger after far less scrolling than `proximity` allows,
+  // without the all-or-nothing grabbiness of `mandatory`.
+  useEffect(() => {
+    const page = pageRef.current
+    if (!page) return
+    const about = page.querySelector('.about-section')
+    if (!about) return
+
+    const TRIGGER = 0.15 // fraction of the viewport to scroll before it commits
+    let locked = false   // ignore scroll events while a programmatic snap runs
+    let inFree = false   // true once we've scrolled past About into the free zone
+    let stable = 0       // the snap station we're anchored to: 0 (hero) or aboutTop
+    let lastTop = page.scrollTop
+
+    const snapTo = (target) => {
+      locked = true
+      stable = target
+      page.scrollTo({ top: target, behavior: 'smooth' })
+      const settle = () => {
+        if (Math.abs(page.scrollTop - target) < 2) {
+          locked = false
+          lastTop = page.scrollTop
+        } else {
+          requestAnimationFrame(settle)
+        }
+      }
+      requestAnimationFrame(settle)
+    }
+
+    const onScroll = () => {
+      if (locked) return
+      const top = page.scrollTop
+      const dir = top - lastTop
+      lastTop = top
+      const aboutTop = about.offsetTop
+      const trig = window.innerHeight * TRIGGER
+
+      if (inFree) {
+        // Coming back up out of the font section: settle on About, not the hero.
+        if (top <= aboutTop) {
+          inFree = false
+          snapTo(aboutTop)
+        }
+        return
+      }
+
+      if (stable === 0) {
+        // At the hero: a small downward nudge commits to About.
+        if (dir > 0 && top > trig) snapTo(aboutTop)
+      } else {
+        // At About: a small upward nudge goes back to the hero; scrolling down
+        // releases into the free font section below.
+        if (dir < 0 && top < aboutTop - trig) snapTo(0)
+        else if (dir > 0 && top > aboutTop + 1) inFree = true
+      }
+    }
+
+    page.addEventListener('scroll', onScroll, { passive: true })
+    return () => page.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <div className="page">
+    <div className="page" ref={pageRef}>
       {/* Top nav */}
       <header className="topnav">
         <div className="topnav-left">
@@ -227,6 +293,9 @@ function Landing() {
         </div>
         <p className="tagline">{t('landing.tagline')}</p>
       </main>
+
+      {/* Footer ornament sitting just above the About section */}
+      <img src={asset('/footer black.png')} alt="" className="footer-mark about-mark" />
 
       {/* About section with horizontally scrollable, looping images + texts */}
       <AboutStrip />
