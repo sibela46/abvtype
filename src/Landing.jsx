@@ -12,13 +12,6 @@ const isSafari =
   typeof navigator !== 'undefined' &&
   /^((?!chrome|chromium|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent)
 
-/* Touch devices (phones/tablets) have no hover to start the hero animation, so
-   it autoplays there; pointer devices keep the hover-to-play interaction. */
-const heroAutoplays =
-  typeof window !== 'undefined' &&
-  typeof window.matchMedia === 'function' &&
-  window.matchMedia('(hover: none)').matches
-
 const aboutImages = [
   { src: '/about/about-01-coolfonts.jpg', alt: 'I want to use cool fonts на български', height: '55vh' },
   { src: '/about/about-02-azbuka.png', alt: 'Cyrillic alphabet pages from the Beron primer', height: '57vh' },
@@ -383,21 +376,25 @@ function Landing() {
         <img src={asset('/whale.png')} alt="" className="whale-img" />
         <div className="letters-group">
           {/* The poster (transparent letters) shows instantly so nothing waits
-              on the video download. On touch devices the clip autoplays muted +
-              looping (the iOS-allowed recipe); on pointer devices it stays
-              paused on the poster and plays on hover. */}
+              on the video download. The clip stays paused on the poster until
+              the user plays it: hover on pointer devices, tap on touch devices
+              (which have no hover) via the click toggle. */}
           <video
             className="hero-letters"
             ref={(el) => { if (el) el.playbackRate = 0.7 }}
             loop
             muted
             playsInline
-            autoPlay={heroAutoplays}
-            preload={heroAutoplays ? 'auto' : 'metadata'}
+            preload="metadata"
             poster={asset('/hero-poster.png')}
             aria-label="АБВ"
-            onMouseEnter={heroAutoplays ? undefined : (e) => e.currentTarget.play()}
-            onMouseLeave={heroAutoplays ? undefined : (e) => e.currentTarget.pause()}
+            onMouseEnter={(e) => e.currentTarget.play()}
+            onMouseLeave={(e) => e.currentTarget.pause()}
+            onClick={(e) => {
+              const v = e.currentTarget
+              if (v.paused) v.play()
+              else v.pause()
+            }}
           >
             {isSafari ? (
               <source src={asset('/hero-animation-bg.mp4')} type="video/mp4" />
