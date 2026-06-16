@@ -1,4 +1,4 @@
-import { useState, useRef, useLayoutEffect, useEffect } from 'react'
+import { useState, useRef, useLayoutEffect, useEffect, Fragment } from 'react'
 import './App.css'
 import { useLang } from './i18n'
 import { asset } from './asset'
@@ -67,6 +67,21 @@ const sourceLinksRight = [
   'fontrevival.com/',
 ]
 
+/* True while the viewport is at the mobile breakpoint (matches the 820px CSS
+   media query), so layout can be restructured rather than only restyled. */
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 820px)').matches,
+  )
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 820px)')
+    const onChange = () => setIsMobile(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+  return isMobile
+}
+
 /* The About strip: two rows (images + texts) sharing one horizontal scroller.
    Each row is rendered as three identical copies and its gap is tuned so both
    rows span the exact same repeat width, letting a single scrollLeft wrap both
@@ -79,17 +94,22 @@ function AboutStrip() {
   const periodRef = useRef(0)
   const initializedRef = useRef(false)
 
+  // On mobile the texts read better as a vertical stack below the image strip,
+  // so they leave the horizontal looping scroller entirely.
+  const isMobile = useIsMobile()
+
   useLayoutEffect(() => {
     const strip = stripRef.current
     const imgRow = imagesRowRef.current
-    const txtRow = textsRowRef.current
-    if (!strip || !imgRow || !txtRow) return
+    const txtRow = textsRowRef.current // absent on mobile (texts stacked outside the strip)
+    if (!strip || !imgRow) return
 
-    // Size both rows to a common period and recentre the loop on the middle copy.
+    initializedRef.current = false // re-centre when crossing the mobile breakpoint
+
+    // Size the row(s) to a common period and recentre the loop on the middle copy.
     const measure = () => {
       const remPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
-      const isMobile = window.matchMedia('(max-width: 820px)').matches
-      const baseGap = (isMobile ? 3 : 10) * remPx
+      const baseGap = (isMobile ? 7 : 10) * remPx
       const ki = aboutImages.length
       const kt = aboutTextKeys.length
       const sumWidths = (row, k) =>
@@ -97,16 +117,18 @@ function AboutStrip() {
           .slice(0, k)
           .reduce((acc, el) => acc + el.getBoundingClientRect().width, 0)
       const imgWidth = sumWidths(imgRow, ki)
-      const txtWidth = sumWidths(txtRow, kt)
-      if (imgWidth === 0 || txtWidth === 0) return // not laid out / images not loaded yet
+      const txtWidth = txtRow ? sumWidths(txtRow, kt) : 0
+      if (imgWidth === 0 || (txtRow && txtWidth === 0)) return // not laid out / images not loaded yet
 
       const period = Math.max(imgWidth + ki * baseGap, txtWidth + kt * baseGap)
       const imgGap = (period - imgWidth) / ki
-      const txtGap = (period - txtWidth) / kt
       imgRow.style.gap = `${imgGap}px`
       imgRow.style.paddingRight = `${imgGap}px`
-      txtRow.style.gap = `${txtGap}px`
-      txtRow.style.paddingRight = `${txtGap}px`
+      if (txtRow) {
+        const txtGap = (period - txtWidth) / kt
+        txtRow.style.gap = `${txtGap}px`
+        txtRow.style.paddingRight = `${txtGap}px`
+      }
       periodRef.current = period
 
       if (!initializedRef.current) {
@@ -127,14 +149,14 @@ function AboutStrip() {
     strip.addEventListener('scroll', handleScroll, { passive: true })
     const ro = new ResizeObserver(measure) // re-measure as images load / on resize
     ro.observe(imgRow)
-    ro.observe(txtRow)
+    if (txtRow) ro.observe(txtRow)
     window.addEventListener('resize', measure)
     return () => {
       strip.removeEventListener('scroll', handleScroll)
       ro.disconnect()
       window.removeEventListener('resize', measure)
     }
-  }, [])
+  }, [isMobile])
 
   const copies = [0, 1, 2]
 
@@ -160,18 +182,85 @@ function AboutStrip() {
             )),
           )}
         </div>
-        <div className="strip-row strip-texts" ref={textsRowRef}>
-          {copies.map((c) =>
-            aboutTextKeys.map((key, i) => (
-              <div className="about-item-text" key={`${key}-${c}`} aria-hidden={c !== 0}>
-                <div className="about-number">{String(i + 1).padStart(3, '0')}</div>
-                <p className="about-text">{t(key)}</p>
-              </div>
-            )),
-          )}
+        {!isMobile && (
+          <div className="strip-row strip-texts" ref={textsRowRef}>
+            {copies.map((c) =>
+              aboutTextKeys.map((key, i) => (
+                <div className="about-item-text" key={`${key}-${c}`} aria-hidden={c !== 0}>
+                  <div className="about-number">{String(i + 1).padStart(3, '0')}</div>
+                  <p className="about-text">{t(key)}</p>
+                </div>
+              )),
+            )}
+          </div>
+        )}
+      </div>
+
+      {isMobile && (
+        <div className="about-texts-stack">
+          {aboutTextKeys.map((key, i) => (
+            <div className="about-item-text" key={key}>
+              <div className="about-number">{String(i + 1).padStart(3, '0')}</div>
+              <p className="about-text">{t(key)}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}
+
+/* The first Font cluster (texts 1–4 + their images). On desktop it is a
+   two-column masonry where the columns stagger the pairs; on mobile that
+   staggering would scramble the reading order, so the pairs are emitted as a
+   single column in narrative order, each image above its own caption. */
+function FontIntroCluster() {
+  const { t } = useLang()
+  const isMobile = useIsMobile()
+
+  if (isMobile) {
+    // [image, text] in story order: font1→font2→font3→font4 with their photos.
+    // The Glyphs screenshot (font4) reads better narrower, with its caption
+    // constrained to the same width.
+    const pairs = [
+      { img: fontImages[1], key: fontTextKeys[0] }, // 1 — при проучването
+      { img: fontImages[0], key: fontTextKeys[1] }, // 2 — след тези критерии
+      { img: fontImages[3], key: fontTextKeys[2] }, // 3 — за работата в програмата
+      { img: fontImages[2], key: fontTextKeys[3], narrow: true }, // 4 — след няколко преработки
+    ]
+    return (
+      <div className="font-cols">
+        <div className="font-col">
+          {pairs.map(({ img, key, narrow }) => (
+            <Fragment key={key}>
+              <img
+                src={img}
+                alt=""
+                className={narrow ? 'font-col-img font-col-img-narrow' : 'font-col-img'}
+              />
+              <p className={narrow ? 'font-text font-text-narrow' : 'font-text'}>{t(key)}</p>
+            </Fragment>
+          ))}
         </div>
       </div>
-    </section>
+    )
+  }
+
+  return (
+    <div className="font-cols">
+      <div className="font-col">
+        <img src={fontImages[0]} alt="" className="font-col-img" />
+        <p className="font-text">{t(fontTextKeys[1])}</p>
+        <img src={fontImages[2]} alt="" className="font-col-img" />
+        <p className="font-text">{t(fontTextKeys[3])}</p>
+      </div>
+      <div className="font-col">
+        <img src={fontImages[1]} alt="" className="font-col-img" />
+        <p className="font-text">{t(fontTextKeys[0])}</p>
+        <img src={fontImages[3]} alt="" className="font-col-img" />
+        <p className="font-text">{t(fontTextKeys[2])}</p>
+      </div>
+    </div>
   )
 }
 
@@ -180,6 +269,7 @@ function Landing() {
   const [menuOpen, setMenuOpen] = useState(false)
   const closeMenu = () => setMenuOpen(false)
   const pageRef = useRef(null)
+  const isMobile = useIsMobile()
 
   // Soft snap between the hero and the About section: a small scroll (≈15% of
   // the viewport) commits to the next/previous panel, while everything below
@@ -288,7 +378,9 @@ function Landing() {
             onMouseLeave={(e) => e.currentTarget.pause()}
           >
             <source src={asset('/hero-animation.webm')} type="video/webm" />
-            <source src={asset('/hero-animation.mp4')} type="video/mp4" />
+            {/* Safari can't render WebM alpha, so it falls through to this
+                background-baked MP4 version */}
+            <source src={asset('/hero-animation-bg.mp4')} type="video/mp4" />
           </video>
         </div>
         <p className="tagline">{t('landing.tagline')}</p>
@@ -304,22 +396,9 @@ function Landing() {
       <section className="font-section">
         <h2 className="font-heading">{t('landing.fontHeading')}</h2>
 
-        {/* Two independent columns (masonry-style): each text sits directly
-            under its own image, so they stagger between the columns */}
-        <div className="font-cols">
-          <div className="font-col">
-            <img src={fontImages[0]} alt="" className="font-col-img" />
-            <p className="font-text">{t(fontTextKeys[1])}</p>
-            <img src={fontImages[2]} alt="" className="font-col-img" />
-            <p className="font-text">{t(fontTextKeys[3])}</p>
-          </div>
-          <div className="font-col">
-            <img src={fontImages[1]} alt="" className="font-col-img" />
-            <p className="font-text">{t(fontTextKeys[0])}</p>
-            <img src={fontImages[3]} alt="" className="font-col-img" />
-            <p className="font-text">{t(fontTextKeys[2])}</p>
-          </div>
-        </div>
+        {/* Two independent columns (masonry-style) on desktop; a single
+            narrative-ordered column on mobile (see FontIntroCluster) */}
+        <FontIntroCluster />
 
         {/* Images 5 & 6 side by side, 50% each */}
         <div className="font-pair">
@@ -328,8 +407,9 @@ function Landing() {
         </div>
         <p className="font-text">{t(fontTextKeys[4])}</p>
 
-        {/* Images 7 & 8 in two columns; text 6 sits under image 7 (left) */}
-        <div className="font-cols">
+        {/* Images 7 & 8 in two columns; text 6 sits under image 7 (left).
+            On mobile the order flips: image 8 full-width on top, then image 7. */}
+        <div className="font-cols font-cols-rev font-cols-rev-wide">
           <div className="font-col">
             <img src={fontImages[6]} alt="" className="font-col-img" />
             <p className="font-text">{t(fontTextKeys[5])}</p>
@@ -350,8 +430,9 @@ function Landing() {
           </div>
         </div>
 
-        {/* Images 11 & 12: text 8 under image 11; image 12 top, centered */}
-        <div className="font-cols">
+        {/* Images 11 & 12: text 8 under image 11; image 12 top, centered.
+            On mobile image 12 (kept at 75%, centered) stacks above image 11. */}
+        <div className="font-cols font-cols-rev">
           <div className="font-col">
             <img src={fontImages[10]} alt="" className="font-col-img" />
             <p className="font-text">{t(fontTextKeys[7])}</p>
@@ -367,8 +448,9 @@ function Landing() {
           <p className="font-text font-full-text">{t(fontTextKeys[8])}</p>
         </div>
 
-        {/* Images 14 & 15: next two texts under each */}
-        <div className="font-cols">
+        {/* Images 14 & 15: next two texts under each.
+            On mobile image 15 + its text stack above image 14 + its text. */}
+        <div className="font-cols font-cols-rev">
           <div className="font-col">
             <img src={fontImages[13]} alt="" className="font-col-img" />
             <p className="font-text">{t(fontTextKeys[9])}</p>
@@ -379,8 +461,10 @@ function Landing() {
           </div>
         </div>
 
-        {/* Sources: clickable cover downloads the PDF; bibliography + links on the right */}
+        {/* Sources: clickable cover downloads the PDF; bibliography + links on the right.
+            On mobile the heading moves above the cover image. */}
         <div className="sources-block">
+          {isMobile && <h3 className="sources-heading sources-heading-top">{t('landing.sourcesHeading')}</h3>}
           <a
             className="sources-cover"
             href={asset('/about/sources.pdf')}
@@ -389,7 +473,7 @@ function Landing() {
             <img src={asset('/about/sources-cover.jpg')} alt="Източници — корица на книгата" />
           </a>
           <div className="sources-info">
-            <h3 className="sources-heading">{t('landing.sourcesHeading')}</h3>
+            {!isMobile && <h3 className="sources-heading">{t('landing.sourcesHeading')}</h3>}
             <ul className="sources-list">
               {sources.map((s, i) => <li key={i}>{s}</li>)}
             </ul>

@@ -160,6 +160,17 @@
   z-index: 2;
 }
 
+/* Safari plays the opaque background MP4 (no WebM alpha support), which would
+   cover the whale. Move it below the letters so it stays visible. */
+@supports (-webkit-hyphens: none) {
+  .whale-img {
+    top: auto;
+    bottom: 6%;
+    transform: translateX(-50%);
+    width: 50%;
+  }
+}
+
 /* ── Tagline ── */
 .tagline {
   position: absolute;
@@ -532,6 +543,7 @@
 
   .hero-letters {
     width: 82vw;
+    height: 30vh;
   }
 
   /* Whale fills the full width of the viewport */
@@ -565,5 +577,98 @@
 
   .sources-info {
     width: 100%;
+  }
+
+  /* Heading moved above the cover image: full width, left-aligned */
+  .sources-heading-top {
+    width: 100%;
+    margin: 0 0 1rem;
+  }
+
+  /* Closing poster: shrink the full-height frame so the empty black bars above
+     and below the rotated image are cropped away */
+  .poster-frame {
+    height: 40vh;
+    margin-top: 0.5rem;
+  }
+
+  /* Font section: collapse the masonry into a single vertical column so each
+     image and its text stack one below the other instead of side by side */
+  .font-cols,
+  .font-pair {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .font-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Flip a pair on mobile so the right column stacks on top of the left one */
+  .font-cols-rev {
+    flex-direction: column-reverse;
+  }
+
+  /* …and, where wanted, force that top image to full width (image 8 over 7) */
+  .font-cols-rev-wide .font-col-img {
+    width: 100% !important;
+  }
+
+  /* Images 9 & 10 staggered when stacked: image 9 to the left, image 10 right */
+  .font-cols-stretch .font-col-cr .font-col-img {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .font-cols-stretch .font-col:not(.font-col-cr) .font-col-img {
+    width: 80%;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  /* Keep each image's desktop size (full-width or the art-directed part-widths
+     like 50/60/75%), but centre the part-width ones now that the columns stack */
+  .font-col-img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* The Glyphs screenshot: a bit narrower, with its caption matching its width */
+  .font-col-img-narrow {
+    width: 70%;
+  }
+
+  .font-text-narrow {
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* The ТАМЪ pair stays staggered when stacked: first left, second right */
+  .font-pair-img {
+    width: 82%;
+    flex: 0 0 auto;
+  }
+
+  .font-pair-img:nth-child(1) {
+    margin-right: auto;
+  }
+
+  .font-pair-img:nth-child(2) {
+    margin-left: auto;
+  }
+
+  .about-texts-stack {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 0.5rem 2rem 1.5rem 2rem;
+  }
+
+  .about-texts-stack .about-text {
+    max-width: 100%;
   }
 }
