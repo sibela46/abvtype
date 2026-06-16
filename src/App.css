@@ -160,16 +160,8 @@
   z-index: 2;
 }
 
-/* Safari plays the opaque background MP4 (no WebM alpha support), which would
-   cover the whale. Move it below the letters so it stays visible. */
-@supports (-webkit-hyphens: none) {
-  .whale-img {
-    top: auto;
-    bottom: 6%;
-    transform: translateX(-50%);
-    width: 50%;
-  }
-}
+/* The Safari branch (opaque MP4 → whale moved out of the way) lives at the end
+   of this file so it can override the mobile width below — see "Safari hero". */
 
 /* ── Tagline ── */
 .tagline {
@@ -672,3 +664,34 @@
     max-width: 100%;
   }
 }
+
+/* ── Safari hero ──────────────────────────────────────────────────────────
+   Safari plays the opaque background-baked MP4 (no WebM alpha), which would
+   cover the centred whale, so the whale drops to the lower hero as a smaller
+   motif. Kept after the mobile media query so its width wins over the 100%
+   set there. The section ornament is lifted to sit clear of the dropped whale
+   instead of landing on top of it. */
+@supports (-webkit-hyphens: none) {
+  .whale-img {
+    top: auto;
+    bottom: 18%;
+    transform: translateX(-50%);
+    width: 40%;
+  }
+
+  .about-mark {
+    margin-top: -5rem;
+  }
+
+  /* On mobile the opaque video only fills the top third, so the whale sits in
+     the upper-middle gap (below the letters, above the tagline + ornament)
+     rather than at the foot of the hero where it crowded the tagline. */
+  @media (max-width: 820px) {
+    .whale-img {
+      top: 44%;
+      bottom: auto;
+      width: 58%;
+    }
+  }
+}
+

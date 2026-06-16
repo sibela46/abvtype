@@ -4,6 +4,14 @@ import { useLang } from './i18n'
 import { asset } from './asset'
 import SiteFooter from './SiteFooter'
 
+/* Safari plays WebM but ignores its alpha channel, rendering the transparent
+   hero animation as an opaque white box. Feed it the background-baked MP4
+   instead (its grey matches the page, so no white box and the whale stays put
+   via the Safari CSS branch). */
+const isSafari =
+  typeof navigator !== 'undefined' &&
+  /^((?!chrome|chromium|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent)
+
 const aboutImages = [
   { src: '/about/about-01-coolfonts.jpg', alt: 'I want to use cool fonts на български', height: '55vh' },
   { src: '/about/about-02-azbuka.png', alt: 'Cyrillic alphabet pages from the Beron primer', height: '57vh' },
@@ -367,20 +375,30 @@ function Landing() {
       <main className="hero">
         <img src={asset('/whale.png')} alt="" className="whale-img" />
         <div className="letters-group">
+          {/* poster shows the letters instantly (especially on mobile, where
+              there's no hover to start playback) so nothing waits on the video
+              download; preload="metadata" keeps the heavy file off the initial
+              load until a hover actually plays it. */}
           <video
             className="hero-letters"
             ref={(el) => { if (el) el.playbackRate = 0.7 }}
             loop
             muted
             playsInline
+            preload="metadata"
+            poster={asset('/hero-poster.png')}
             aria-label="АБВ"
             onMouseEnter={(e) => e.currentTarget.play()}
             onMouseLeave={(e) => e.currentTarget.pause()}
           >
-            <source src={asset('/hero-animation.webm')} type="video/webm" />
-            {/* Safari can't render WebM alpha, so it falls through to this
-                background-baked MP4 version */}
-            <source src={asset('/hero-animation-bg.mp4')} type="video/mp4" />
+            {isSafari ? (
+              <source src={asset('/hero-animation-bg.mp4')} type="video/mp4" />
+            ) : (
+              <>
+                <source src={asset('/hero-animation.webm')} type="video/webm" />
+                <source src={asset('/hero-animation-bg.mp4')} type="video/mp4" />
+              </>
+            )}
           </video>
         </div>
         <p className="tagline">{t('landing.tagline')}</p>
