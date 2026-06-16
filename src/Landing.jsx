@@ -196,7 +196,7 @@ function AboutStrip() {
               aboutTextKeys.map((key, i) => (
                 <div className="about-item-text" key={`${key}-${c}`} aria-hidden={c !== 0}>
                   <div className="about-number">{String(i + 1).padStart(3, '0')}</div>
-                  <p className="about-text">{t(key)}</p>
+                  <p className="about-text" data-nosnippet>{t(key)}</p>
                 </div>
               )),
             )}
