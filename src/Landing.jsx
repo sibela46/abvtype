@@ -402,12 +402,10 @@ function Landing() {
                     format Safari renders. Falls back to the opaque
                     background-baked MP4 if HEVC alpha can't be decoded. */}
                 <source src={asset('/hero-animation.mov')} type='video/mov' />
-                <source src={asset('/hero-animation-bg.mp4')} type="video/mp4" />
               </>
             ) : (
               <>
                 <source src={asset('/hero-animation.webm')} type="video/webm" />
-                <source src={asset('/hero-animation-bg.mp4')} type="video/mp4" />
               </>
             )}
           </video>
