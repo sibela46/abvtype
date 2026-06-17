@@ -4,10 +4,10 @@ import { useLang } from './i18n'
 import { asset } from './asset'
 import SiteFooter from './SiteFooter'
 
-/* Safari plays WebM but ignores its alpha channel, rendering the transparent
-   hero animation as an opaque white box. Feed it the background-baked MP4
-   instead (its grey matches the page, so no white box and the whale stays put
-   via the Safari CSS branch). */
+/* Safari ignores WebM's alpha channel, so it gets an HEVC/H.265 MP4 with
+   alpha instead (the only transparent video format Safari renders). Everyone
+   else gets the smaller transparent WebM. Both fall back to the opaque
+   background-baked MP4. */
 const isSafari =
   typeof navigator !== 'undefined' &&
   /^((?!chrome|chromium|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent)
@@ -397,7 +397,13 @@ function Landing() {
             }}
           >
             {isSafari ? (
-              <source src={asset('/hero-animation-bg.mp4')} type="video/mp4" />
+              <>
+                {/* HEVC with an alpha channel is the only transparent video
+                    format Safari renders. Falls back to the opaque
+                    background-baked MP4 if HEVC alpha can't be decoded. */}
+                <source src={asset('/hero-animation-alpha.mp4')} type='video/mp4; codecs="hvc1"' />
+                <source src={asset('/hero-animation-bg.mp4')} type="video/mp4" />
+              </>
             ) : (
               <>
                 <source src={asset('/hero-animation.webm')} type="video/webm" />

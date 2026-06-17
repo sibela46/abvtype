@@ -95,7 +95,7 @@ function useFitChar(family, ch) {
 }
 
 const FONTS = [
-  { family: 'BeronBuch', file: '/BeronBuch-Regular.otf',           name: 'Beron Buch', author: 'Antonia Danailova' },
+  { family: 'BeronBuch', file: '/BeronBuch-Regular.otf',           name: 'Beron', author: 'Antonia Danailova' },
   { family: 'SofiaSans', file: '/SofiaSans-VariableFont_wght.ttf', name: 'Sofia Sans', author: 'Botio Nikoltchev, Ani Petrova' },
   { family: 'Oi',        file: '/fontsforweb/Oi-Regular.ttf',      name: 'Oi',         author: 'Kostas Bartsokas' },
   { family: 'Ossem',     file: '/fontsforweb/Ossem-Regular.otf',   name: 'Ossem',      author: 'Kiril Semkov' },
