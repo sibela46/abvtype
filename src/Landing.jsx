@@ -401,7 +401,7 @@ function Landing() {
                 {/* HEVC with an alpha channel is the only transparent video
                     format Safari renders. Falls back to the opaque
                     background-baked MP4 if HEVC alpha can't be decoded. */}
-                <source src={asset('/hero-animation-alpha.mp4')} type='video/mp4; codecs="hvc1"' />
+                <source src={asset('/hero-animation.mov')} type='video/mov' />
                 <source src={asset('/hero-animation-bg.mp4')} type="video/mp4" />
               </>
             ) : (
