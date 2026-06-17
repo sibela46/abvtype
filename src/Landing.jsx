@@ -29,9 +29,9 @@ const aboutTextKeys = [
 ]
 
 const fontImages = [
-  '/font/01.jpg', '/font/02.jpg', '/font/04.png', '/font/03.png', '/font/05.png',
-  '/font/06.png', '/font/07.jpg', '/font/08.jpg', '/font/09.jpg', '/font/10.jpg',
-  '/font/11.jpg', '/font/12.jpg', '/font/13.jpg', '/font/14.jpg', '/font/15.jpg',
+  '/font/01.png', '/font/02.png', '/font/04.png', '/font/03.png', '/font/05.png',
+  '/font/06.png', '/font/07.png', '/font/08.png', '/font/09.png', '/font/10.png',
+  '/font/11.png', '/font/12.png', '/font/13.jpg', '/font/14.jpg', '/font/15.png',
 ].map(asset)
 
 const fontTextKeys = [
@@ -528,7 +528,7 @@ function Landing() {
 
         {/* Full-bleed closing poster at the end of the section, rotated 90° */}
         <div className="poster-frame">
-          <img src={asset('/about/poster-beron-display.jpg')} alt="Beron Display poster" className="poster-img" />
+          <img src={asset('/about/poster-beron-display.png')} alt="Beron Display poster" className="poster-img" />
         </div>
       </section>
 
