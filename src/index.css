@@ -27,7 +27,7 @@
   --color-surface-hover: #c4cbd2; /* specimen panel on hover */
 
   /* Darks */
-  --color-black: #060606;           /* near-black: dark panels, nav links, footer */
+  --color-black: #222;           /* near-black: dark panels, nav links, footer */
   --color-black-soft: #111;         /* specimen name / download icon */
 
   /* Lights & lines */
