@@ -4,10 +4,11 @@ import { useLang } from './i18n'
 import { asset } from './asset'
 import SiteFooter from './SiteFooter'
 
-/* Safari ignores WebM's alpha channel, so it gets an HEVC/H.265 MP4 with
-   alpha instead (the only transparent video format Safari renders). Everyone
-   else gets the smaller transparent WebM. Both fall back to the opaque
-   background-baked MP4. */
+/* The hero clip has no usable alpha channel in either web format (VP9 alpha is
+   unreliable and HEVC alpha can't be encoded off macOS), so both renditions are
+   composited over the page background colour (--color-bg, #b8bfc8) and blend
+   seamlessly into it. Safari can't play WebM, so it gets the HEVC/MP4; everyone
+   else gets the smaller WebM. */
 const isSafari =
   typeof navigator !== 'undefined' &&
   /^((?!chrome|chromium|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent)
@@ -438,10 +439,10 @@ function Landing() {
           >
             {isSafari ? (
               <>
-                {/* Safari can't play WebM. This is the HEVC stream remuxed into
-                    an MP4 container (hvc1-tagged, the tag Safari requires). It's
-                    opaque (no alpha), i.e. the background-baked version — which
-                    is why the whale is repositioned for Safari in App.css. */}
+                {/* Safari can't play WebM, so it gets the HEVC/MP4 (hvc1-tagged,
+                    the tag Safari requires), composited over the page colour.
+                    It's opaque, which is why the whale is repositioned for
+                    Safari in App.css. */}
                 <source src={asset('/hero-animation-hevc.mp4')} type='video/mp4; codecs="hvc1"' />
               </>
             ) : (
