@@ -32,6 +32,38 @@ function useFitText(text) {
   return ref
 }
 
+/* Shrink the alphabet specimen rows until they fit their box without clipping.
+   Starts from the CSS clamp size (the desktop baseline) and only steps down when
+   the rows would overflow — so desktop is untouched and the small mobile box
+   gets a size that stays contained. Re-runs on resize and once fonts load. */
+function useFitSpecimen(family) {
+  const ref = useRef(null)
+  useLayoutEffect(() => {
+    const box = ref.current
+    if (!box) return
+    const rows = Array.from(box.querySelectorAll('.spec-row'))
+    if (!rows.length) return
+    const MIN_PX = 8
+    const fit = () => {
+      rows.forEach((r) => { r.style.fontSize = '' }) // revert to the CSS clamp baseline
+      let size = parseFloat(getComputedStyle(rows[0]).fontSize)
+      const apply = (s) => rows.forEach((r) => { r.style.fontSize = `${s}px` })
+      while (
+        size > MIN_PX &&
+        (box.scrollHeight > box.clientHeight || box.scrollWidth > box.clientWidth)
+      ) {
+        size -= 1
+        apply(size)
+      }
+    }
+    fit()
+    window.addEventListener('resize', fit)
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit)
+    return () => window.removeEventListener('resize', fit)
+  }, [family])
+  return ref
+}
+
 /* Size the single big character so its glyph ink fills — but stays fully inside
    — its card, then optically centre the ink. Uses canvas font metrics so each
    font is sized on its own proportions (narrow letters grow, wide ones shrink).
@@ -128,6 +160,7 @@ function SpecimenCard({ font, showAuthor }) {
   const style = { fontFamily: `'${font.family}', sans-serif` }
   const sampleText = t('tf.sampleText')
   const textRef = useFitText(sampleText)
+  const specimenRef = useFitSpecimen(font.family)
   const charRef = useFitChar(font.family, 'А')
   return (
     <article className="spec-card">
@@ -153,7 +186,7 @@ function SpecimenCard({ font, showAuthor }) {
         </div>
 
         {/* MIDDLE layer — alphabet specimen */}
-        <div className="spec-layer spec-layer--specimen">
+        <div className="spec-layer spec-layer--specimen" ref={specimenRef}>
           <div className="spec-row" style={style}>АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЮЯ</div>
           <div className="spec-row" style={style}>абвгдежзийклмнопрстуфхцчшщъьюя</div>
           <div className="spec-row" style={style}>0123456789</div>

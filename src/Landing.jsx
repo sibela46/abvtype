@@ -291,28 +291,64 @@ function Landing() {
     if (!about) return
 
     const TRIGGER = 0.15 // fraction of the viewport to scroll before it commits
+    const COOLDOWN = 120 // ms to ignore residual momentum after a snap settles
     let locked = false   // ignore scroll events while a programmatic snap runs
     let inFree = false   // true once we've scrolled past About into the free zone
     let stable = 0       // the snap station we're anchored to: 0 (hero) or aboutTop
     let lastTop = page.scrollTop
+    const SETTLE_TIMEOUT = 900 // ms before we give up waiting for the smooth scroll
+    let settleRaf = 0    // pending settle frame, so a new snap can cancel the old
+    let cooldownTimer = 0
+
+    const release = () => {
+      locked = false
+      lastTop = page.scrollTop
+      // Swallow the leftover inertial scrolling that follows a snap; without this
+      // the momentum re-enters onScroll and immediately fires a second snap.
+      clearTimeout(cooldownTimer)
+      cooldownTimer = setTimeout(() => {
+        lastTop = page.scrollTop
+        cooldownTimer = 0
+      }, COOLDOWN)
+    }
 
     const snapTo = (target) => {
       locked = true
       stable = target
+      cancelAnimationFrame(settleRaf)
+      clearTimeout(cooldownTimer)
+      cooldownTimer = 0
       page.scrollTo({ top: target, behavior: 'smooth' })
-      const settle = () => {
-        if (Math.abs(page.scrollTop - target) < 2) {
-          locked = false
-          lastTop = page.scrollTop
-        } else {
-          requestAnimationFrame(settle)
+      let startTs = 0
+      let prevTop = page.scrollTop
+      let stalls = 0 // consecutive frames with no movement
+      const settle = (ts) => {
+        if (!startTs) startTs = ts
+        const top = page.scrollTop
+        if (Math.abs(top - target) < 2) {
+          release()
+          return
         }
+        // Bail if the smooth scroll stalls (user grabbed it, so the browser
+        // cancelled it) or simply takes too long — otherwise the rAF loop spins
+        // forever and the page stays locked. Snap the rest instantly.
+        stalls = top === prevTop ? stalls + 1 : 0
+        prevTop = top
+        if (stalls >= 3 || ts - startTs > SETTLE_TIMEOUT) {
+          page.scrollTo({ top: target })
+          release()
+          return
+        }
+        settleRaf = requestAnimationFrame(settle)
       }
-      requestAnimationFrame(settle)
+      settleRaf = requestAnimationFrame(settle)
     }
 
     const onScroll = () => {
       if (locked) return
+      // During the post-snap cooldown, follow the position but make no snap
+      // decision, so leftover momentum can't trigger an immediate second snap.
+      if (cooldownTimer) { lastTop = page.scrollTop; return }
       const top = page.scrollTop
       const dir = top - lastTop
       lastTop = top
@@ -340,7 +376,11 @@ function Landing() {
     }
 
     page.addEventListener('scroll', onScroll, { passive: true })
-    return () => page.removeEventListener('scroll', onScroll)
+    return () => {
+      page.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(settleRaf)
+      clearTimeout(cooldownTimer)
+    }
   }, [])
 
   return (
@@ -398,10 +438,11 @@ function Landing() {
           >
             {isSafari ? (
               <>
-                {/* HEVC with an alpha channel is the only transparent video
-                    format Safari renders. Falls back to the opaque
-                    background-baked MP4 if HEVC alpha can't be decoded. */}
-                <source src={asset('/hero-animation.mov')} type='video/mov' />
+                {/* Safari can't play WebM. This is the HEVC stream remuxed into
+                    an MP4 container (hvc1-tagged, the tag Safari requires). It's
+                    opaque (no alpha), i.e. the background-baked version — which
+                    is why the whale is repositioned for Safari in App.css. */}
+                <source src={asset('/hero-animation-hevc.mp4')} type='video/mp4; codecs="hvc1"' />
               </>
             ) : (
               <>
