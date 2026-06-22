@@ -148,6 +148,15 @@
   height: auto;
   margin: 0 auto;
   transform: translateX(-5%);
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.hero-letters:focus,
+.hero-letters:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 .whale-img {
@@ -163,7 +172,7 @@
 /* ── Tagline ── */
 .tagline {
   position: absolute;
-  bottom: 25%;
+  bottom: 12%;
   right: 15rem;
   font-size: clamp(1rem, 2.5vw, 2rem);
   font-weight: 500;
