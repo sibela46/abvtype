@@ -148,15 +148,20 @@
   height: auto;
   margin: 0 auto;
   transform: translateX(-5%);
-  outline: none;
-  border: none;
-  box-shadow: none;
-}
-
-.hero-letters:focus,
-.hero-letters:focus-visible {
-  outline: none;
-  box-shadow: none;
+  /* The clip has the page colour (--color-bg) baked in rather than a real alpha
+     channel. The baked grey decodes ~1–2 levels off the CSS background, which is
+     invisible on its own but shows as a hard-edged rectangle (Mach banding) once
+     the video replaces the transparent poster on play. Feathering the outer
+     edges to transparent removes the hard boundary so the two greys blend. The
+     letters sit within the central ~60%/55%, so the 12% fade never touches them. */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0, #000 12%, #000 88%, transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-composite: intersect;
 }
 
 .whale-img {
